@@ -1,7 +1,29 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2A2A2A;
+  border-bottom: 1px solid #8e8e8e;
+  padding: 12px 0;
+  width: 389px;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.header__label {
+  font-size: 35px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+
 .nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-top: 1px solid #272626;;
   background-color: #2A2A2A;
   padding: 12px 0;
   width: 389px;
@@ -9,7 +31,6 @@
   bottom: 0;
   left: 0;
   z-index: 1000;
-  border: 1px solid white;
 }
 .nav__item {
   display: flex;
