@@ -3,14 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles/index.css">
+  <link rel="stylesheet" href="./assets/styles/general.css">
   <title>Fitness Tracker</title>
 </head>
 <body>
+<main>
   <nav class="nav">
-    <div>Routine</div>
-    <div>History</div>
-    <div>Settings</div>
+    <!-- Routine Tab -->
+    <a href="#" class="nav__item">
+      <svg viewBox="0 0 24 24" class="nav__icon">
+        <path d="M3 10L12 3l9 7v11a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10z" />
+      </svg>
+      <span class="nav__label">Routine</span>
+    </a>
+
+    <!-- History Tab -->
+    <a href="#" class="nav__item">
+      <svg viewBox="0 0 24 24" class="nav__icon">
+        <path d="M7 10h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zM5 20a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V2h2v2h8V2h2v2h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5zm14-2V9H5v9h14z"/>
+      </svg>
+      <span class="nav__label">History</span>
+    </a>
+
+    <!-- Settings Tab -->
+    <a href="#" class="nav__item">
+      <svg viewBox="0 0 24 24" class="nav__icon">
+        <path d="M19.43 12.98c.04-.32.07-.66.07-1s-.03-.68-.07-1l2.11-1.65a.5.5 0 0 0 .12-.63l-2-3.46a.5.5 0 0 0-.6-.22l-2.49 1a7.05 7.05 0 0 0-1.73-1L14 2.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5L9.15 5a7.05 7.05 0 0 0-1.73 1l-2.49-1a.5.5 0 0 0-.6.22l-2 3.46a.5.5 0 0 0 .12.63l2.11 1.65c-.04.32-.07.66-.07 1s.03.68.07 1l-2.11 1.65a.5.5 0 0 0-.12.63l2 3.46c.14.24.43.33.68.22l2.49-1c.53.42 1.1.77 1.73 1L10 21.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5l.35-2.53a7.05 7.05 0 0 0 1.73-1l2.49 1c.25.11.54.02.68-.22l2-3.46a.5.5 0 0 0-.12-.63l-2.11-1.65zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
+        <circle cx="12" cy="12" r="1.5" fill="#111"/>
+      </svg>
+      <span class="nav__label">Settings</span>
+    </a>
   </nav>
+</main>
 </body>
 </html>
