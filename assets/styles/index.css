@@ -17,10 +17,22 @@ header {
   color: #FFFFFF;
 }
 
+.main__content {
+  position: fixed;
+  top: 70px;
+  bottom: 110px;
+  right: 0;
+  left: 0;
+  overflow-y: auto;
+  padding: 20px 15px;
+
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
 
 .warmup {
-  outline: 1px solid white;
   padding: 20px 15px;
+  border-bottom: 1px solid #8e8e8e6d;
 }
 .warmup__header {
   display: flex;
@@ -38,18 +50,34 @@ header {
 .warmup__icon {
   width: 20px;
   height: 20px;
-  fill: #c9ff27;
+  fill: #b5ff22;
   vertical-align: middle;
 }
 .warmup__toggle {
   text-decoration: underline;
   font-size: 16px;
 }
-.warmup__list {
+
+
+.routine {
+  padding: 20px 15px;
+  color: white;
+  font-size: 20px;
+}
+
+.routine span {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exercises {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding-top: 30px;
+}
+.exercises__list--hide {
+  display: none;
 }
 .exercises-card {
   display: flex;
@@ -68,45 +96,30 @@ header {
   border-radius: 8px;
 }
 .exercises-card__title {
-  font-size: 17px;
+  font-size: 20px;
   color: #FFFFFF;
 }
 .exercises-card__details {
-  font-size: 14px;
+  font-size: 16px;
   color: white;
 }
 
-
-.nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-top: 1px solid #272626;;
-  background-color: #2A2A2A;
-  padding: 12px 0;
-  width: 100%;
+.start-routine {
   position: fixed;
-  bottom: 0;
-  z-index: 1000;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #b5ff22;
+  border: none;
+  border-radius: 30px;
+  white-space: nowrap;
+  height: 50px;
+  width: 80%;
+  font-weight: 700;
+  font-size: 20px;
+  z-index: 1002;
 }
-.nav__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #8e8e8e;
-  font-size: 12px;
-}
-.nav__item:active {
-  color: #FFFFFF;
-}
-.nav__icon {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 4px;
-  fill: currentColor;
-}
-.nav__label {
-  display: block;
-  font-size: 15px;
+
+.nav--routine {
+  box-shadow: 0 -15px 30px rgba(21, 21, 21, 0.638);
 }

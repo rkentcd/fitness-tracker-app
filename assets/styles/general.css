@@ -5,8 +5,11 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #2A2A2A;
+  background-color: #2e2e2e;
   margin: 0;
+}
+
+body.layout--padded {
   padding-top: 96px;
 }
 
@@ -14,7 +17,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2A2A2A;
+  background-color: #2e2e2e;
   border-bottom: 1px solid #8e8e8e;
   padding: 12px 0;
   width: 100%;
@@ -22,4 +25,38 @@ header {
   position: fixed;
   top: 0;
   z-index: 1000;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #272626;;
+  background-color: #2e2e2e;
+  padding: 12px 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+}
+.nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #8e8e8e;
+  font-size: 12px;
+}
+.nav__item:active {
+  color: #FFFFFF;
+}
+.nav__icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+  fill: currentColor;
+}
+.nav__label {
+  display: block;
+  font-size: 15px;
 }
