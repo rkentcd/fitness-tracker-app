@@ -13,6 +13,7 @@
   <header>
     <span class="header__label">Settings</span>
   </header>
+
   <div class="settings">
     <a class="settings__item js-settings__item" data-target="theme">
       <div class="settings__item-label"> 
@@ -31,23 +32,21 @@
   </div>
 
   <!-- Theme Panel -->
-  <div class="settings-panel js-settings-panel--theme">
-    <div class="settings-panel__header">
-      <button class="settings-panel__back js-settings-panel__back">
-        <svg class="settings-panel__icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <polyline class="settings-panel__icon-arrow-line" points="244 400 100 256 244 112" />
-          <line class="settings-panel__icon-arrow-line" x1="120" y1="256" x2="412" y2="256" />
+  <div class="panel js-panel--theme">
+    <div class="panel__header">
+      <button class="panel__back js-panel__back">
+        <svg class="panel__icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <polyline class="panel__icon-arrow-line" points="244 400 100 256 244 112" />
+          <line class="panel__icon-arrow-line" x1="120" y1="256" x2="412" y2="256" />
         </svg>
       </button>
-      <span class="settings-panel__title">Pick a color scheme</span>
+      <span class="panel__title">Pick a color scheme</span>
     </div>
-    <div class="settings-panel__content">
-      <div class="settings-panel__item">
-        Light
-      </div>
-      <div class="settings-panel__item">
+    <div class="panel__content panel__content--theme">
+      <div class="panel__item">Light</div>
+      <div class="panel__item">
         Dark
-        <svg class="settings-panel__theme-icon settings-panel__theme-icon--check" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" aria-hidden="true" role="img">
+        <svg class="panel__theme-icon panel__theme-icon--check" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" aria-hidden="true" role="img">
           <path d="M4 12.6111L8.92308 17.5L20 6.5" />
         </svg>
       </div>
@@ -55,19 +54,19 @@
   </div>
 
   <!-- Routine Panel -->
-  <div class="settings-panel js-settings-panel--routine">
-    <div class="settings-panel__header settings-panel__header--routine">
-      <button class="settings-panel__back js-settings-panel__back">
-        <svg class="settings-panel__icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <polyline class="settings-panel__icon-arrow-line" points="244 400 100 256 244 112" />
-          <line class="settings-panel__icon-arrow-line" x1="120" y1="256" x2="412" y2="256" />
+  <div class="panel js-panel--routine">
+    <div class="panel__header panel__header--routine">
+      <button class="panel__back js-panel__back">
+        <svg class="panel__icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <polyline class="panel__icon-arrow-line" points="244 400 100 256 244 112" />
+          <line class="panel__icon-arrow-line" x1="120" y1="256" x2="412" y2="256" />
         </svg>
       </button>
-      <span class="settings-panel__title">Select Routine</span>
-      <button class="settings-panel__add-routine">+</button>
+      <span class="panel__title">Select Routine</span>
+      <button class="panel__add-routine js-panel__add-routine">+</button>
     </div>
-    <div class="settings-panel__content settings-panel__content--routine">
-      <div class="settings-panel__routine-card routine-card routine-card--selected">
+    <div class="panel__content panel__content--routine">
+      <div class="panel__routine-card routine-card routine-card--selected">
         <div class="routine-card__header">
           <span>Monday</span>
           <button class="button button--dots" aria-label="More options">
@@ -76,7 +75,6 @@
             <span class="button__dot"></span>
           </button>
         </div>
-
         <div class="routine-card__preview">
           Incline Dumbbell Press, Incline Dumbbel Flys, Rear Delt Fly, Explosive Push Ups, Archer Push Ups
         </div>
@@ -84,6 +82,140 @@
     </div>
   </div>
 
+  <!-- Create Routine Panel -->
+  <div class="panel panel--create-routine js-routine-panel--create">
+    <div class="panel__header panel__header--routine">
+      <button class="panel__cancel js-routine-panel__cancel-button">
+        Cancel
+      </button>
+      <span class="panel__title">Create Routine</span>
+      <button class="panel__save js-routine-panel__save-button">
+        Save
+      </button>
+    </div>
+    <div class="panel__content panel__content--create-routine">
+      <input type="text" class="panel__routine-title-input" placeholder="Routine title">
+      <div class="panel__added-exercises">
+        <div class="panel__add-exercises-text">Get started by adding an exercise to your routine.</div>
+        <button class="panel__add-exercises-button js-panel__add-exercises-button">+ Add exercise</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Exercises Panel -->
+   <div class="panel panel--add-exercises js-add-exercises-panel--add">
+    <div class="panel__header panel__header--routine">
+      <button class="panel__cancel js-add-exercises-panel__cancel-button">
+        Cancel
+      </button>
+      <span class="panel__title">Add Exercises</span>
+      <button class="panel__create js-add-exercises-panel__create-button">
+        Create
+      </button>
+    </div>
+    <div class="panel__content panel__content--add-exercises">
+      <input class="panel__search-exercises" type="search" placeholder="Search exercise">
+      <div class="panel__exercises-container">
+      <span class="panel__content-header">All Exercises</span>
+        <div class="panel__all-exercises">
+          <div class="exercises exercises--add-exercises-panel">
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Incline Dumbbell Press</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Incline Dumbbell Flys</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Rear Delt Flys</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Explosive Push Ups</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Archer Push Ups</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Incline Dumbbell Press</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Incline Dumbbell Flys</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Rear Delt Flys</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Explosive Push Ups</span>
+              </div>
+            </div>
+            <div class="exercises-card exercises-card--panel">
+              <div class="exercises-card__info">
+                <img class="exercises-card__image" src="./assets/images/exercises/jumping-jacks.png" alt="Jumping Jacks">
+                <span class="exercises-card__title">Archer Push Ups</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Custom Exercise Bottom Sheet -->
+  <div class="overlay js-overlay"></div>
+
+  <div class="bottom-sheet js-bottom-sheet">
+    <span>Create New Exercise</span>
+    <div class="form-group">
+      <input type="text" placeholder="Exercise Name..." class="js-exercise-name-input">
+    </div>
+    <div class="sheet-buttons">
+      <button class="btn-cancel js-btn-cancel">Back</button>
+      <button class="btn-save js-btn-save">Save</button>
+    </div>
+  </div>
+
+  <!-- <div class="panel panel--create-exercise js-exercises-panel--create">
+    <div class="panel__header panel__header--routine">
+      <button class="panel__back js-panel__back">
+        <svg class="panel__icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <polyline class="panel__icon-arrow-line" points="244 400 100 256 244 112" />
+          <line class="panel__icon-arrow-line" x1="120" y1="256" x2="412" y2="256" />
+        </svg>
+      </button>
+      <span class="panel__title">Create Exercise</span>
+      <button class="panel__save js-exercises-panel__save-button">
+        Save
+      </button>
+    </div>
+    <div class="panel__content panel__content--create-exercise">
+      
+    </div>
+  </div> -->
 
   <nav class="nav">
     <a href="index.html" class="nav__item">
@@ -108,6 +240,7 @@
       <span class="nav__label">Settings</span>
     </a>
   </nav>
+
   <script type="module" src="/assets/scripts/settings.js"></script>
 </body>
 </html>

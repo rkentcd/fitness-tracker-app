@@ -70,40 +70,6 @@ header {
   margin-right: auto;
 }
 
-.exercises {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 30px;
-}
-.exercises__list--hide {
-  display: none;
-}
-.exercises-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.exercises-card__info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-.exercises-card__image {
-  width: 45px;
-  height: 45px;
-  border-radius: 8px;
-}
-.exercises-card__title {
-  font-size: 20px;
-  color: #FFFFFF;
-}
-.exercises-card__details {
-  font-size: 16px;
-  color: white;
-}
-
 .start-routine {
   position: fixed;
   bottom: 80px;

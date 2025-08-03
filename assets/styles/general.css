@@ -36,8 +36,8 @@ header {
   padding: 12px 0;
   width: 100%;
   position: fixed;
-  bottom: 0;
-  z-index: 1000;
+  bottom: -1px;
+  z-index: 9999;
 }
 .nav__item {
   display: flex;
@@ -59,4 +59,38 @@ header {
 .nav__label {
   display: block;
   font-size: 15px;
+}
+
+.exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 30px;
+}
+.exercises__list--hide {
+  display: none;
+}
+.exercises-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.exercises-card__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.exercises-card__image {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+}
+.exercises-card__title {
+  font-size: 20px;
+  color: #FFFFFF;
+}
+.exercises-card__details {
+  font-size: 16px;
+  color: white;
 }
