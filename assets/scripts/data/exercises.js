@@ -1,7 +1,22 @@
 export const exercises = [{
   id: "1",
   image: "./assets/images/exercises/incline-dumbbell-press.png",
-  name: "Incline Bench Press (Dumbbell)"
+  name: "Incline Bench Press (Dumbbell)",
+  instructions: [
+    "Set the bench to a 30-45 degree incline and lie back with feet flat on the floor",
+    "Hold a dumbbell in each hand at shoulder level with palms facing forward",
+    "Press the dumbbells upward until your arms are fully extended, keeping a slight bend in your elbows",
+    "Lower the dumbbells back down to shoulder level in a controlled manner",
+    "Repeat for the desired number of repetitions"
+  ],
+  formCues: [
+    "Keep your back flat against the bench and avoid arching",
+    "Engage your core to maintain stability throughout the movement",
+    "Focus on using your chest muscles to press the dumbbells up rather than relying on your shoulders or arms",
+    "Keep your wrists straight and avoid letting them bend backward",
+    "Breathe out as you press the dumbbells up and inhale as you lower them down"
+  ],
+  videoUrl: "https://www.youtube.com/embed/IP4oeKh1Sd4"
 },{
   id: "2",
   image: "./assets/images/exercises/incline-dumbbell-flys.png",
