@@ -12,7 +12,7 @@ export function renderExercises() {
           <img class="exercises-card__image" src="${exercise.image}" alt="${exercise.name}">
           <span class="exercises-card__title">${exercise.name}</span>
         </div>
-        <button class="exercise-preview-btn js-exercise-preview-btn">
+        <button class="exercise-preview-btn js-exercise-preview-btn" data-exercise-id="${exercise.id}">
           <svg class="exercise-preview-btn-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
             <g>
               <polygon points="221.258,239.94 318.582,336.766 458.482,197.578 490.42,229.354 512,100.514 382.504,121.99 414.44,153.76 318.582,249.131 221.258,152.305 72.06,300.732 116.102,344.553"/>
