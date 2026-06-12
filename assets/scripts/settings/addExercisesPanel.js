@@ -1,10 +1,10 @@
 import { exercises } from "../data/exercises.js";
 import { showExercisePreviewPanel } from "./exercisePreviewPanel.js";
 
-export function renderExercises() {
+export function renderExercises(filteredExercises = exercises) {
   let exercisesHTML = '';
 
-  exercises.forEach((exercise) => {
+  filteredExercises.forEach((exercise) => {
     
     exercisesHTML+= `
       <div class="exercises-card js-exercises-card exercises-card--panel" exercise-id="${exercise.id}">

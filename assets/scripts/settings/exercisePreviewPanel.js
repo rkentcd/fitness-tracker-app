@@ -4,7 +4,6 @@ export function showExercisePreviewPanel() {
   const exercisePrevBtnElem = document.querySelectorAll('.js-exercise-preview-btn');
   const targetPanel = document.querySelector('.js-exercise-preview');
 
-  // Delegated cancel handler
   targetPanel.addEventListener('click', (e) => {
     if (e.target.closest('.js-exercise-preview__cancel')) {
       targetPanel.classList.remove('panel--preview-active');
