@@ -27,7 +27,6 @@ export function initExerciseSearch() {
       `;
     } else {
       exerciseElemPanel.innerHTML = '';
-      console.log(filteredExercises);
       renderExercises(filteredExercises);
     }
   });
