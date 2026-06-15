@@ -1,4 +1,7 @@
 import { customExercises } from "../data/customExercises.js";
+import { initExerciseSelection } from "../settings/addExercisesPanel.js";
+import { renderExercises } from "./addExercisesPanel.js";
+
 
 export function showCreateExercisePanel() {
   const openBtn = document.querySelector('.js-add-exercises-panel__create-button');
@@ -18,6 +21,8 @@ export function showCreateExercisePanel() {
       const newExercise = { id: "c" + Date.now(), name };
       customExercises.push(newExercise);
       renderCustomExercises();
+      renderExercises(); 
+      initExerciseSelection();
       closeSheet(overlay, sheet, input);
     } else {
       alert('Please enter a name!');
@@ -62,7 +67,7 @@ function generateCustomExercises() {
   customExercises.forEach((exercise) => {
     customHTML += `
       <div class="exercises-card js-exercises-card exercises-card--panel" exercise-id="${exercise.id}">
-        <div class="exercises-card__info">
+        <div class="exercises-card__info js-exercises-card__info">
           <img class="exercises-card__image" src="assets/images/icons/hevy.png" alt="${exercise.name}">
           <span class="exercises-card__title">${exercise.name}</span>
         </div>

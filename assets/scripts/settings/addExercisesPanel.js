@@ -8,7 +8,7 @@ export function renderExercises(filteredExercises = exercises) {
     
     exercisesHTML+= `
       <div class="exercises-card js-exercises-card exercises-card--panel" exercise-id="${exercise.id}">
-        <div class="exercises-card__info">
+        <div class="exercises-card__info js-exercises-card__info">
           <img class="exercises-card__image" src="${exercise.image}" alt="${exercise.name}">
           <span class="exercises-card__title">${exercise.name}</span>
         </div>
@@ -27,8 +27,6 @@ export function renderExercises(filteredExercises = exercises) {
   exerciseElemPanel.innerHTML = exercisesHTML;
 
   showExercisePreviewPanel(); //func for previewing exercises
-
-  addEventListeners();
 }
 
 export function showAddExercisesPanel() {
@@ -46,8 +44,38 @@ export function showAddExercisesPanel() {
   })
 }
 
-function addEventListeners() {
+let selectedExercises = [];
 
+export function initExerciseSelection() {
+  const exerciseInfos = document.querySelectorAll('.js-exercises-card__info');
+
+  exerciseInfos.forEach((info) => {
+    info.addEventListener('click', () => {
+      const parentCard = info.closest('.js-exercises-card');
+      const exerciseId = parentCard.getAttribute('exercise-id');
+
+      if (parentCard.classList.contains('is-selected')) {
+        parentCard.classList.remove('is-selected');
+        selectedExercises = selectedExercises.filter(id => id !== exerciseId);
+      } else {
+        parentCard.classList.add('is-selected');
+        selectedExercises.push(exerciseId);
+      }
+
+      updateAddBtn();
+    });
+  });
+}
+
+export function updateAddBtn() {
+  const addBtnElem = document.querySelector('.js-btn-add-exercises');
+
+  if (selectedExercises.length > 0) {
+    addBtnElem.style.display = 'block';
+    addBtnElem.textContent = `Add ${selectedExercises.length} exercise${selectedExercises.length > 1 ? 's' : ''}`;
+  } else {
+    addBtnElem.style.display = 'none';
+  }
 }
 
 function initExercisePreview() {

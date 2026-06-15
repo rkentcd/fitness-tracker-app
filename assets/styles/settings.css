@@ -232,6 +232,7 @@
   color: #8e8e8e;
 }
 .panel__exercises-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -375,6 +376,9 @@
   text-align: center;
   gap: 20px;
 }
+.exercises-card.is-selected .exercises-card__info {
+  margin-left: 5px;
+}
 .exercises__no-results span {
   font-size: 15px;
   color: #8e8e8e;
@@ -383,7 +387,8 @@
   gap: 15px;
 }
 .exercises-card.exercises-card--panel {
-  padding-bottom: 15px;
+  padding: 7px 0px;
+  word-break: break-word;
   border-bottom: 1px solid #8e8e8e57;
 }
 .exercise-preview-btn {
@@ -404,6 +409,27 @@
   display: block;
   transform: translateY(1.5px);
 }
+.btn-add-exercises {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  width: 85%;
+  border: none;
+  border-radius: 10px;
+  background-color: #b5ff22;
+  font-size: 16px;
+  font-weight: 700; 
+  display: none;
+}
+.is-selected {
+  border-left: 4px solid #b5ff22;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  transition: border-color 0.2s ease-in-out;
+}
+
 
 /* ========== DOTS BUTTON ========== */
 .button--dots {
@@ -411,7 +437,7 @@
   border: none;
   padding: 8px;
   display: flex;
-  align-items: center;
+  align-items: center; 
   justify-content: center;
   gap: 4px;
   cursor: pointer;
