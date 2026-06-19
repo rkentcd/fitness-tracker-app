@@ -1,5 +1,8 @@
+import { customExercises } from "../data/customExercises.js";
 import { exercises } from "../data/exercises.js";
 import { showExercisePreviewPanel } from "./exercisePreviewPanel.js";
+import { renderSelectedRoutineExercises } from "./createRoutinePanel.js";
+import { routines } from "../data/routines.js";
 
 export function renderExercises(filteredExercises = exercises) {
   let exercisesHTML = '';
@@ -30,21 +33,28 @@ export function renderExercises(filteredExercises = exercises) {
 }
 
 export function showAddExercisesPanel() {
-  const addExercisesBtnElem = document.querySelector('.js-panel__add-exercises-button');
-  const cancelBtnElem = document.querySelector('.js-add-exercises-panel__cancel-button');
+  document.addEventListener('click', (event) => {
+    const addBtn = event.target.closest('.js-panel__add-exercises-button');
+    if (addBtn) {
+      const targetPanelElem = document.querySelector('.js-add-exercises-panel--add');
+      if (targetPanelElem) {
+        targetPanelElem.classList.add('panel--active-from-top');
+      }
+    }
 
-  addExercisesBtnElem.addEventListener('click', () => {
-    const targetPanelElem = document.querySelector('.js-add-exercises-panel--add');
-    targetPanelElem.classList.add('panel--active-from-top');
+    const cancelBtn = event.target.closest('.js-add-exercises-panel__cancel-button');
+    if (cancelBtn) {
+      const parentPanelElem = cancelBtn.closest('.panel');
+      if (parentPanelElem) {
+        parentPanelElem.classList.remove('panel--active-from-top');
+      }
+    }
   });
-
-  cancelBtnElem.addEventListener('click', () => {
-    const parentPanelElem = cancelBtnElem.closest('.panel');
-    parentPanelElem.classList.remove('panel--active-from-top');
-  })
 }
 
 let selectedExercises = [];
+export let currentRoutineExercises = [];
+
 
 export function initExerciseSelection() {
   const exerciseInfos = document.querySelectorAll('.js-exercises-card__info');
@@ -65,9 +75,11 @@ export function initExerciseSelection() {
       updateAddBtn();
     });
   });
+
+  handleAddBtnClick();
 }
 
-export function updateAddBtn() {
+function updateAddBtn() {
   const addBtnElem = document.querySelector('.js-btn-add-exercises');
 
   if (selectedExercises.length > 0) {
@@ -76,6 +88,33 @@ export function updateAddBtn() {
   } else {
     addBtnElem.style.display = 'none';
   }
+}
+
+
+function handleAddBtnClick() {
+  const addBtnElem = document.querySelector('.js-btn-add-exercises');
+
+  addBtnElem.addEventListener('click', () => {
+   const selectedObjects = getSelectedExerciseObjects();
+
+    currentRoutineExercises = [...currentRoutineExercises, ...selectedObjects];
+    renderSelectedRoutineExercises();
+
+    const parentPanelElem = addBtnElem.closest('.panel');
+    parentPanelElem.classList.remove('panel--active-from-top');
+
+    selectedExercises = [];
+    document.querySelectorAll('.js-exercises-card.is-selected')
+      .forEach(card => card.classList.remove('is-selected'));
+    addBtnElem.style.display = 'none';      
+  });
+}
+
+function getSelectedExerciseObjects() {
+  return selectedExercises.map(id => {
+    return exercises.find(ex => ex.id === id) 
+        || customExercises.find(ex => ex.id === id);
+  }).filter(Boolean);
 }
 
 function initExercisePreview() {
