@@ -97,7 +97,18 @@ function handleAddBtnClick() {
   addBtnElem.addEventListener('click', () => {
    const selectedObjects = getSelectedExerciseObjects();
 
+   if (window.__exerciseToReplace) {
+    const index = currentRoutineExercises.findIndex(ex => ex.id === window.__exerciseToReplace);
+
+    if (index !== -1 && selectedObjects.length > 0) {
+      currentRoutineExercises[index] = selectedObjects[0];
+    }
+
+    window.__exerciseToReplace = null;
+   } else {
     currentRoutineExercises = [...currentRoutineExercises, ...selectedObjects];
+   }
+    
     renderSelectedRoutineExercises();
 
     const parentPanelElem = addBtnElem.closest('.panel');
@@ -106,6 +117,7 @@ function handleAddBtnClick() {
     selectedExercises = [];
     document.querySelectorAll('.js-exercises-card.is-selected')
       .forEach(card => card.classList.remove('is-selected'));
+
     addBtnElem.style.display = 'none';      
   });
 }

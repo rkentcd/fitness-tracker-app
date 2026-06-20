@@ -1,4 +1,6 @@
 import { currentRoutineExercises } from './addExercisesPanel.js';
+import { initExerciseOptionsSheet } from './exerciseOptionsSheet.js';
+
 
 export function showCreateRoutinePanel () {
   const createRoutinePanelElem = document.querySelector('.js-panel__add-routine');
@@ -27,12 +29,12 @@ export function renderSelectedRoutineExercises() {
     
     currentRoutineExercises.forEach(exercise => {
       addedExercisesHTML += `
-        <div class="routine-exercise__item">
+        <div class="routine-exercise__item" data-exercise-id="${exercise.id}">
           <img src="${exercise.image ? exercise.image : 'assets/images/icons/hevy.png'}" alt="icon" class="exercises-card__image">
           <div class="routine-exercise__info">
             <div class="routine-exercise__details">
               <span class="routine-exercise__name">${exercise.name}</span>
-              <button class="routine-exercise__options-btn">⋮</button>
+              <button class="routine-exercise__options-btn js-exercise-options-btn" data-exercise-id="${exercise.id}" data-exercise-name="${exercise.name}">⋮</button>
             </div>
             <div class="routine-exercise__inputs">
               <label>kg</label><input type="number" placeholder="60">
@@ -50,4 +52,23 @@ export function renderSelectedRoutineExercises() {
 
     selectedExercisesElem.innerHTML = addedExercisesHTML;
   }
+
+  attachOptionsButtonListeners();
+}
+
+function attachOptionsButtonListeners() {
+  const optionsBtns = document.querySelectorAll('.js-exercise-options-btn');
+
+  optionsBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const exerciseId = btn.dataset.exerciseId;
+      const exerciseName = btn.dataset.exerciseName;
+      const exerciseItem = btn.closest('.routine-exercise__item');
+
+      const sheet = initExerciseOptionsSheet();
+      sheet.openSheet(exerciseId, exerciseName, exerciseItem);
+    });
+  });
 }

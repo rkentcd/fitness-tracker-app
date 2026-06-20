@@ -5,6 +5,7 @@ import { showCreateExercisePanel, renderCustomExercises } from "./settings/creat
 import { showExercisePreviewPanel } from "./settings/exercisePreviewPanel.js";
 import { initExerciseSearch } from "./settings/exerciseSearch.js";
 import {initExerciseSelection} from "./settings/addExercisesPanel.js";
+import { initExerciseOptionsSheet } from "./settings/exerciseOptionsSheet.js";
 
 
 
@@ -20,3 +21,4 @@ renderSelectedRoutineExercises();
 
 initExerciseSearch();
 initExerciseSelection();
+initExerciseOptionsSheet();
