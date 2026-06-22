@@ -9,7 +9,7 @@ export function renderExercises(filteredExercises = exercises) {
   filteredExercises.forEach((exercise) => {
     exercisesHTML += `
       <div class="js-exercises-card exercises-card exercises-card--panel" exercise-id="${exercise.id}">
-        <div class="js-exercises-card__info">
+        <div class="exercises-card__info js-exercises-card__info">
           <img class="exercises-card__image" src="${exercise.image}" alt="${exercise.name}">
           <span class="exercises-card__title">${exercise.name}</span>
         </div>

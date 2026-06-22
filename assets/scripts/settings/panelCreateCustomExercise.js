@@ -73,7 +73,7 @@ function generateCustomExercises(customExercises) {
   customExercises.forEach((exercise) => {
     customHTML += `
       <div class="js-exercises-card exercises-card exercises-card--panel" exercise-id="${exercise.id}">
-        <div class="js-exercises-card__info">
+        <div class="exercises-card__info js-exercises-card__info">
           <img class="exercises-card__image" src="${exercise.image || 'assets/images/icons/hevy.png'}" alt="${exercise.name}">
           <span class="exercises-card__title">${exercise.name}</span>
         </div>
