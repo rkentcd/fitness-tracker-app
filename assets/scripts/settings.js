@@ -1,22 +1,22 @@
-import { initSettingsPanelNavigation } from "./settings/panelNavigation.js";
-import { showCreateRoutinePanel, renderSelectedRoutineExercises } from "./settings/createRoutinePanel.js";
-import { showAddExercisesPanel, renderExercises } from "./settings/addExercisesPanel.js";
-import { showCreateExercisePanel, renderCustomExercises } from "./settings/createCustomExercise.js";
-import { showExercisePreviewPanel } from "./settings/exercisePreviewPanel.js";
-import { initExerciseSearch } from "./settings/exerciseSearch.js";
-import { initExerciseSelection } from "./settings/addExercisesPanel.js";
-import { initExerciseOptionsSheet } from "./settings/exerciseOptionsSheet.js";
+import { initSettingsNavigation } from './settingsNavigation.js';
+import { showPanelCreateRoutine, renderRoutineExercises } from './panelCreateRoutine.js';
+import { showPanelAddExercises, renderExercises } from './panelAddExercises.js';
+import { showPanelCreateCustomExercise, renderCustomExercises } from './panelCreateCustomExercise.js';
+import { showPanelExercisePreview } from './panelExercisePreview.js';
+import { initExerciseSearch } from './exerciseSearch.js';
+import { initExerciseSelection } from './panelAddExercises.js';
+import { initSheetExerciseOptions } from './sheetExerciseOptions.js';
 
-initSettingsPanelNavigation();
-showCreateRoutinePanel();
-showAddExercisesPanel();
+initSettingsNavigation();
+showPanelCreateRoutine();
+showPanelAddExercises();
 renderExercises();
-showCreateExercisePanel();
-showExercisePreviewPanel();
+showPanelCreateCustomExercise();
+showPanelExercisePreview();
 renderCustomExercises();
 
-renderSelectedRoutineExercises();
+renderRoutineExercises();
 
 initExerciseSearch();
 initExerciseSelection();
-initExerciseOptionsSheet();
+initSheetExerciseOptions();

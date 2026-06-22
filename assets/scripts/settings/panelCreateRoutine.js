@@ -1,11 +1,11 @@
-import { initExerciseOptionsSheet } from './exerciseOptionsSheet.js';
+import { initSheetExerciseOptions } from './sheetExerciseOptions.js';
 import { getCurrentRoutineExercises } from '../storage.js';
 
-export function showCreateRoutinePanel() {
-  const createRoutinePanelElem = document.querySelector('.js-panel__add-routine');
+export function showPanelCreateRoutine() {
+  const createRoutineBtnElem = document.querySelector('.js-panel__add-routine');
   const cancelBtnElem = document.querySelector('.js-routine-panel__cancel-button');
 
-  createRoutinePanelElem.addEventListener('click', () => {
+  createRoutineBtnElem.addEventListener('click', () => {
     const targetPanelElem = document.querySelector('.js-routine-panel--create');
     targetPanelElem.classList.add('panel--active-from-top');
   });
@@ -16,14 +16,14 @@ export function showCreateRoutinePanel() {
   });
 }
 
-export function renderSelectedRoutineExercises() {
+export function renderRoutineExercises() {
   const selectedExercisesElem = document.querySelector('.js-panel__added-exercises');
   const exercises = getCurrentRoutineExercises();
 
   if (exercises.length === 0) {
     selectedExercisesElem.innerHTML = `
       <div class="panel__add-exercises-text">Get started by adding an exercise to your routine.</div>
-      <button class="panel__add-exercises-button js-panel__add-exercises-button">+ Add exercise</button>
+      <button class="js-panel__add-exercises-button panel__add-exercises-button">+ Add exercise</button>
     `;
   } else {
     let addedExercisesHTML = '';
@@ -35,7 +35,7 @@ export function renderSelectedRoutineExercises() {
           <div class="routine-exercise__info">
             <div class="routine-exercise__details">
               <span class="routine-exercise__name">${exercise.name}</span>
-              <button class="routine-exercise__options-btn js-exercise-options-btn" data-exercise-id="${exercise.id}" data-exercise-name="${exercise.name}">⋮</button>
+              <button class="js-exercise-options-btn routine-exercise__options-btn" data-exercise-id="${exercise.id}" data-exercise-name="${exercise.name}">⋮</button>
             </div>
             <div class="routine-exercise__inputs">
               <label>kg</label><input type="number" placeholder="60">
@@ -48,7 +48,7 @@ export function renderSelectedRoutineExercises() {
     });
 
     addedExercisesHTML += `
-      <button class="panel__add-exercises-button js-panel__add-exercises-button">+ Add exercise</button>
+      <button class="js-panel__add-exercises-button panel__add-exercises-button">+ Add exercise</button>
     `;
 
     selectedExercisesElem.innerHTML = addedExercisesHTML;
@@ -58,17 +58,17 @@ export function renderSelectedRoutineExercises() {
 }
 
 function attachOptionsButtonListeners() {
-  const optionsBtns = document.querySelectorAll('.js-exercise-options-btn');
+  const optionsBtnElems = document.querySelectorAll('.js-exercise-options-btn');
 
-  optionsBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+  optionsBtnElems.forEach((btnElem) => {
+    btnElem.addEventListener('click', (e) => {
       e.stopPropagation();
 
-      const exerciseId = btn.dataset.exerciseId;
-      const exerciseName = btn.dataset.exerciseName;
-      const exerciseItem = btn.closest('.routine-exercise__item');
+      const exerciseId = btnElem.dataset.exerciseId;
+      const exerciseName = btnElem.dataset.exerciseName;
+      const exerciseItem = btnElem.closest('.routine-exercise__item');
 
-      const sheet = initExerciseOptionsSheet();
+      const sheet = initSheetExerciseOptions();
       sheet.openSheet(exerciseId, exerciseName, exerciseItem);
     });
   });

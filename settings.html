@@ -15,15 +15,15 @@
   </header>
 
   <div class="settings">
-    <a class="settings__item js-settings__item" data-target="theme">
-      <div class="settings__item-label"> 
+    <a class="js-settings__item settings__item" data-target="theme">
+      <div class="settings__item-label">
         <img class="settings__item-icon" src="./assets/images/icons/color-theme.svg" alt="Color Theme">
         <span>Color Theme</span>
       </div>
       <span class="settings__item-arrow">&gt;</span>
     </a>
-    <a class="settings__item js-settings__item" data-target="routine">
-      <div class="settings__item-label"> 
+    <a class="js-settings__item settings__item" data-target="routine">
+      <div class="settings__item-label">
         <img class="settings__item-icon" src="./assets/images/icons/dumbbell.svg" alt="Color Theme">
         <span>Switch Routine</span>
       </div>
@@ -32,9 +32,9 @@
   </div>
 
   <!-- Theme Panel -->
-  <div class="panel js-panel--theme">
+  <div class="js-panel--theme panel">
     <div class="panel__header">
-      <button class="panel__back js-panel__back">
+      <button class="js-panel__back panel__back">
         <svg class="panel__icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <polyline class="panel__icon-arrow-line" points="244 400 100 256 244 112" />
           <line class="panel__icon-arrow-line" x1="120" y1="256" x2="412" y2="256" />
@@ -54,16 +54,16 @@
   </div>
 
   <!-- Routine Panel -->
-  <div class="panel js-panel--routine">
+  <div class="js-panel--routine panel">
     <div class="panel__header panel__header--routine">
-      <button class="panel__back js-panel__back">
+      <button class="js-panel__back panel__back">
         <svg class="panel__icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <polyline class="panel__icon-arrow-line" points="244 400 100 256 244 112" />
           <line class="panel__icon-arrow-line" x1="120" y1="256" x2="412" y2="256" />
         </svg>
       </button>
       <span class="panel__title">Select Routine</span>
-      <button class="panel__add-routine js-panel__add-routine">+</button>
+      <button class="js-panel__add-routine panel__add-routine">+</button>
     </div>
     <div class="panel__content panel__content--routine">
       <div class="panel__routine-card routine-card routine-card--selected">
@@ -83,90 +83,90 @@
   </div>
 
   <!-- Create Routine Panel -->
-  <div class="panel panel--create-routine js-routine-panel--create">
+  <div class="js-routine-panel--create panel panel--create-routine">
     <div class="panel__header panel__header--routine">
-      <button class="panel__cancel js-routine-panel__cancel-button">
+      <button class="js-routine-panel__cancel-button panel__cancel">
         Cancel
       </button>
       <span class="panel__title">Create Routine</span>
-      <button class="panel__save js-routine-panel__save-button">
+      <button class="js-routine-panel__save-button panel__save">
         Save
       </button>
     </div>
     <div class="panel__content panel__content--create-routine">
-      <input type="text" class="panel__routine-title-input js-panel__routine-title-input" placeholder="Routine title">
-      <div class="panel__added-exercises js-panel__added-exercises">
+      <input type="text" class="js-panel__routine-title-input panel__routine-title-input" placeholder="Routine title">
+      <div class="js-panel__added-exercises panel__added-exercises">
       </div>
     </div>
   </div>
 
   <!-- Exercise Bottom Sheet -->
-  <div class="overlay overlay--custom-exercise js-exercise-options-overlay"></div>
+  <div class="js-exercise-options-overlay overlay overlay--custom-exercise"></div>
 
-  <div class="bottom-sheet bottom-sheet--custom bottom-sheet--custom-options js-exercise-options-sheet">
-    <div class="sheet__drag-handle js-sheet__drag-handle">
+  <div class="js-exercise-options-sheet bottom-sheet bottom-sheet--custom bottom-sheet--custom-options">
+    <div class="js-sheet__drag-handle sheet__drag-handle">
       <div class="sheet__drag-bar"></div>
     </div>
     <div class="sheet__content">
       <span class="sheet__title">Exercise Options</span>
-      <div class="sheet__exercise-name js-sheet-exercise-name">Push-up</div>
+      <div class="js-sheet-exercise-name sheet__exercise-name">Push-up</div>
       <div class="sheet__options">
-        <button class="sheet__option-btn sheet__option-btn--replace js-sheet-replace-btn">
+        <button class="js-sheet-replace-btn sheet__option-btn sheet__option-btn--replace">
           <svg class="sheet__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 7h13l-3-3m3 3-3 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M20 17H7l3 3m-3-3 3-3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span>Replace Exercise</span>
         </button>
-        <button class="sheet__option-btn sheet__option-btn--remove js-sheet-remove-btn">
+        <button class="js-sheet-remove-btn sheet__option-btn sheet__option-btn--remove">
           <svg class="sheet__option-icon sheet__option-icon--remove" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
-              <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-        <span>Remove Exercise</span>
+          <span>Remove Exercise</span>
         </button>
       </div>
     </div>
   </div>
 
   <!-- Add Exercises Panel -->
-   <div class="panel panel--add-exercises js-add-exercises-panel--add">
+  <div class="js-add-exercises-panel--add panel panel--add-exercises">
     <div class="panel__header panel__header--routine">
-      <button class="panel__cancel js-add-exercises-panel__cancel-button">
+      <button class="js-add-exercises-panel__cancel-button panel__cancel">
         Cancel
       </button>
       <span class="panel__title">Add Exercises</span>
-      <button class="panel__create js-add-exercises-panel__create-button">
+      <button class="js-add-exercises-panel__create-button panel__create">
         Create
       </button>
     </div>
     <div class="panel__content panel__content--add-exercises">
-      <input class="panel__search-exercises js-panel__search-exercises" type="search" placeholder="Search exercise">
+      <input class="js-panel__search-exercises panel__search-exercises" type="search" placeholder="Search exercise">
       <div class="panel__exercises-container">
-        <div class="panel__custom-exercises js-custom-exercises"></div>
+        <div class="js-custom-exercises panel__custom-exercises"></div>
         <div class="panel__all-exercises">
           <span class="panel__content-header">All Exercises</span>
-          <div class="exercises js-exercises exercises--add-exercises-panel"></div>
+          <div class="js-exercises exercises exercises--add-exercises-panel"></div>
         </div>
       </div>
     </div>
-    <button class="btn-add-exercises js-btn-add-exercises"></button>
+    <button class="js-btn-add-exercises btn-add-exercises"></button>
   </div>
 
   <!-- Exercise Preview Panel -->
-  <div class="panel panel--preview-exercise js-exercise-preview"></div>
+  <div class="js-exercise-preview panel panel--preview-exercise"></div>
 
   <!-- Create Custom Exercise Bottom Sheet -->
-  <div class="overlay overlay--custom-exercise-sheet js-overlay"></div>
+  <div class="js-overlay overlay overlay--custom-exercise-sheet"></div>
 
-  <div class="bottom-sheet js-bottom-sheet">
+  <div class="js-bottom-sheet bottom-sheet">
     <span>Create New Exercise</span>
     <div class="form-group">
       <input type="text" placeholder="Exercise Name..." class="js-exercise-name-input">
     </div>
     <div class="sheet-buttons">
-      <button class="btn-cancel js-btn-cancel">Back</button>
-      <button class="btn-save js-btn-save">Save</button>
+      <button class="js-btn-cancel btn-cancel">Back</button>
+      <button class="js-btn-save btn-save">Save</button>
     </div>
   </div>
 

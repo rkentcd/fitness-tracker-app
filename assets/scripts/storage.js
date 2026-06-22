@@ -1,6 +1,6 @@
 const KEYS = {
   CUSTOM_EXERCISES: 'fitness_custom_exercises',
-  CURRENT_ROUTINE: 'fitness_current_routine',
+  CURRENT_ROUTINE: 'fitness_current_routine'
 };
 
 function getData(key, defaultValue = null) {
@@ -41,12 +41,12 @@ export function addCustomExercise(exercise) {
 
 export function deleteCustomExercise(exerciseId) {
   const exercises = getCustomExercises();
-  const filtered = exercises.filter(ex => ex.id !== exerciseId);
+  const filtered = exercises.filter((ex) => ex.id !== exerciseId);
   saveCustomExercises(filtered);
   return filtered;
 }
 
-// for current routine exercises
+// for routine exercises
 export function getCurrentRoutineExercises() {
   return getData(KEYS.CURRENT_ROUTINE, []);
 }
@@ -55,7 +55,7 @@ export function saveCurrentRoutineExercises(exercises) {
   return setData(KEYS.CURRENT_ROUTINE, exercises);
 }
 
-// clear all data for testing
+// clear all data
 export function clearAllData() {
   Object.values(KEYS).forEach((key) => {
     localStorage.removeItem(key);
