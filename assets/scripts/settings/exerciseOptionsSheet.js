@@ -1,3 +1,5 @@
+import { getCurrentRoutineExercises, saveCurrentRoutineExercises} from '../storage.js';
+
 export function initExerciseOptionsSheet() {
   const overlay = document.querySelector('.js-exercise-options-overlay');
   const sheet = document.querySelector('.js-exercise-options-sheet');
@@ -84,7 +86,6 @@ export function initExerciseOptionsSheet() {
     overlay.classList.remove('active');
     document.body.style.overflow = '';
     currentExerciseId = null;
-    currentExerciseName = null;
     currentExerciseElement = null;
 
     cleanupListeners();
@@ -103,27 +104,30 @@ export function initExerciseOptionsSheet() {
   }
 
   function handleRemoveClick() {
-    if (currentExerciseId && currentExerciseElement) {
-      currentExerciseElement.remove();
+    if (currentExerciseId) {
+      let exercises = getCurrentRoutineExercises();
 
-      import('./addExercisesPanel.js').then(({ currentRoutineExercises }) => {
-        const index = currentRoutineExercises.findIndex(ex => ex.id === currentExerciseId);
-        if (index !== -1) {
-          currentRoutineExercises.splice(index, 1);
-          import('./createRoutinePanel.js').then(({ renderSelectedRoutineExercises }) => {
-            renderSelectedRoutineExercises();
-          });
-        }
-      });
+      const index = exercises.findIndex(ex => ex.id === currentExerciseId);
 
-      closeSheet();
+      if (index !== -1) {
+        exercises.splice(index, 1);
+
+        saveCurrentRoutineExercises(exercises);
+
+        import('./createRoutinePanel.js').then(({ renderSelectedRoutineExercises }) => {
+          renderSelectedRoutineExercises();
+        });
+
+        closeSheet();
+      }
     }
   }
 
   function handleReplaceClick() {
-    if (currentExerciseId) {
+    if (currentExerciseId && currentExerciseElement) {
       window.__exerciseToReplace = currentExerciseId;
-
+      window.__exerciseElementToReplace = currentExerciseElement;
+      
       closeSheet();
 
       setTimeout(() => {

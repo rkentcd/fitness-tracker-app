@@ -1,6 +1,8 @@
-import { customExercises } from "../data/customExercises.js";
-import { initExerciseSelection } from "../settings/addExercisesPanel.js";
+import { exercises } from "../data/exercises.js";
 import { renderExercises } from "./addExercisesPanel.js";
+import { initExerciseSelection } from "./addExercisesPanel.js";
+import { addCustomExercise, deleteCustomExercise, getCustomExercises } from "../storage.js";
+
 
 
 export function showCreateExercisePanel() {
@@ -18,8 +20,14 @@ export function showCreateExercisePanel() {
   saveBtn.addEventListener('click', () => {
     const name = input.value.trim();
     if (name) {
-      const newExercise = { id: "c" + Date.now(), name };
-      customExercises.push(newExercise);
+      const newExercise = { 
+        id: "c" + Date.now(),
+        name: name,
+        image: "assets/images/icons/hevy.png" 
+      };
+
+      addCustomExercise(newExercise);
+
       renderCustomExercises();
       renderExercises(); 
       initExerciseSelection();
@@ -43,6 +51,7 @@ function closeSheet(overlay, sheet, input) {
 }
 
 export function renderCustomExercises() {
+  const customExercises = getCustomExercises();
   const customElemPanel = document.querySelector('.js-custom-exercises');
 
   if (customExercises.length > 0) {
@@ -50,7 +59,7 @@ export function renderCustomExercises() {
     customElemPanel.innerHTML = `
       <span class="panel__content-header">Custom Exercises</span>
       <div class="exercises exercises--add-exercises-panel">
-        ${generateCustomExercises()}
+        ${generateCustomExercises(customExercises)}
       </div>
     `;
   } else {
@@ -61,14 +70,14 @@ export function renderCustomExercises() {
   addDeleteListeners();
 }
 
-function generateCustomExercises() {
+function generateCustomExercises(customExercises) {
   let customHTML = '';
 
   customExercises.forEach((exercise) => {
     customHTML += `
       <div class="exercises-card js-exercises-card exercises-card--panel" exercise-id="${exercise.id}">
         <div class="exercises-card__info js-exercises-card__info">
-          <img class="exercises-card__image" src="assets/images/icons/hevy.png" alt="${exercise.name}">
+          <img class="exercises-card__image" src="${exercise.image || 'assets/images/icons/hevy.png'}" alt="${exercise.name}">
           <span class="exercises-card__title">${exercise.name}</span>
         </div>
         <button class="exercise-preview-btn js-exercise-delete-btn" data-exercise-id="${exercise.id}">
@@ -86,17 +95,17 @@ function generateCustomExercises() {
 }
 
 
-function addDeleteListeners() {
+function addDeleteListeners(customExercises) {
   const deleteButtons = document.querySelectorAll('.js-exercise-delete-btn');
 
   deleteButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const id = e.currentTarget.dataset.exerciseId;
-      const index = customExercises.findIndex(ex => ex.id === id);
-      if (index !== -1) {
-        customExercises.splice(index, 1);
-        renderCustomExercises();
-      }
+      
+      deleteCustomExercise(id);
+      renderCustomExercises();
+      renderExercises();
+      initExerciseSelection();
     });
   });
 }

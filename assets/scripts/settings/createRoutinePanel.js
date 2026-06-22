@@ -1,8 +1,7 @@
-import { currentRoutineExercises } from './addExercisesPanel.js';
 import { initExerciseOptionsSheet } from './exerciseOptionsSheet.js';
+import { getCurrentRoutineExercises } from '../storage.js';
 
-
-export function showCreateRoutinePanel () {
+export function showCreateRoutinePanel() {
   const createRoutinePanelElem = document.querySelector('.js-panel__add-routine');
   const cancelBtnElem = document.querySelector('.js-routine-panel__cancel-button');
 
@@ -10,24 +9,26 @@ export function showCreateRoutinePanel () {
     const targetPanelElem = document.querySelector('.js-routine-panel--create');
     targetPanelElem.classList.add('panel--active-from-top');
   });
+
   cancelBtnElem.addEventListener('click', () => {
     const parentPanelElem = cancelBtnElem.closest('.panel');
     parentPanelElem.classList.remove('panel--active-from-top');
-  })
+  });
 }
 
 export function renderSelectedRoutineExercises() {
   const selectedExercisesElem = document.querySelector('.js-panel__added-exercises');
+  const exercises = getCurrentRoutineExercises();
 
-  if (currentRoutineExercises.length === 0) {
+  if (exercises.length === 0) {
     selectedExercisesElem.innerHTML = `
       <div class="panel__add-exercises-text">Get started by adding an exercise to your routine.</div>
       <button class="panel__add-exercises-button js-panel__add-exercises-button">+ Add exercise</button>
     `;
   } else {
     let addedExercisesHTML = '';
-    
-    currentRoutineExercises.forEach(exercise => {
+
+    exercises.forEach((exercise) => {
       addedExercisesHTML += `
         <div class="routine-exercise__item" data-exercise-id="${exercise.id}">
           <img src="${exercise.image ? exercise.image : 'assets/images/icons/hevy.png'}" alt="icon" class="exercises-card__image">

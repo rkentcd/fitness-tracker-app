@@ -1,8 +1,7 @@
-import { customExercises } from "../data/customExercises.js";
 import { exercises } from "../data/exercises.js";
 import { showExercisePreviewPanel } from "./exercisePreviewPanel.js";
 import { renderSelectedRoutineExercises } from "./createRoutinePanel.js";
-import { routines } from "../data/routines.js";
+import { getCustomExercises, getCurrentRoutineExercises,saveCurrentRoutineExercises } from "../storage.js";
 
 export function renderExercises(filteredExercises = exercises) {
   let exercisesHTML = '';
@@ -48,13 +47,15 @@ export function showAddExercisesPanel() {
       if (parentPanelElem) {
         parentPanelElem.classList.remove('panel--active-from-top');
       }
+
+      //reset replace if cancelled
+      window.__exerciseToReplace = null;
+      window.__exerciseElementToReplace = null;
     }
   });
 }
 
 let selectedExercises = [];
-export let currentRoutineExercises = [];
-
 
 export function initExerciseSelection() {
   const exerciseInfos = document.querySelectorAll('.js-exercises-card__info');
@@ -90,6 +91,16 @@ function updateAddBtn() {
   }
 }
 
+//function for combining built-in + custom exercises
+function getSelectedExerciseObjects() {
+  const baseExercises = exercises;
+  const userCustomExercises = getCustomExercises();
+  const allExercises = [...baseExercises, ...userCustomExercises];
+
+  return selectedExercises.map((id) => {
+    return allExercises.find((ex) => ex.id === id);
+  }).filter(Boolean);
+}
 
 function handleAddBtnClick() {
   const addBtnElem = document.querySelector('.js-btn-add-exercises');
@@ -97,40 +108,49 @@ function handleAddBtnClick() {
   addBtnElem.addEventListener('click', () => {
    const selectedObjects = getSelectedExerciseObjects();
 
-   if (window.__exerciseToReplace) {
-    const index = currentRoutineExercises.findIndex(ex => ex.id === window.__exerciseToReplace);
+   let currentExercises = getCurrentRoutineExercises();
 
-    if (index !== -1 && selectedObjects.length > 0) {
-      currentRoutineExercises[index] = selectedObjects[0];
+   if (window.__exerciseToReplace) {
+    let index = -1;
+
+    if (window.__exerciseElementToReplace) {
+      const allExerciseItems = document.querySelectorAll('.routine-exercise__item');
+
+      allExerciseItems.forEach((item, i) => {
+        if (item === window.__exerciseElementToReplace) {
+          index = i;
+        }
+      });
+
+      if (index !== -1 && selectedObjects.length > 0) {
+        currentExercises[index] = selectedObjects[0];
+      }
+    }
+    
+    if (index === -1) {
+      const idIndex = currentExercises.findIndex(ex => ex.id === window.__exerciseToReplace);
+      if (idIndex !== -1 && selectedObjects.length > 0) {
+        currentExercises[idIndex] = selectedObjects[0];
+      }
     }
 
     window.__exerciseToReplace = null;
-   } else {
-    currentRoutineExercises = [...currentRoutineExercises, ...selectedObjects];
-   }
+    window.__exerciseElementToReplace = null;
+  } else {
+    currentExercises = [...currentExercises, ...selectedObjects];
+  }
+
+  saveCurrentRoutineExercises(currentExercises);
     
-    renderSelectedRoutineExercises();
+  renderSelectedRoutineExercises();
 
-    const parentPanelElem = addBtnElem.closest('.panel');
-    parentPanelElem.classList.remove('panel--active-from-top');
+  const parentPanelElem = addBtnElem.closest('.panel');
+  parentPanelElem.classList.remove('panel--active-from-top');
 
-    selectedExercises = [];
-    document.querySelectorAll('.js-exercises-card.is-selected')
-      .forEach(card => card.classList.remove('is-selected'));
+  selectedExercises = [];
+  document.querySelectorAll('.js-exercises-card.is-selected')
+    .forEach(card => card.classList.remove('is-selected'));
 
-    addBtnElem.style.display = 'none';      
+  addBtnElem.style.display = 'none';      
   });
 }
-
-function getSelectedExerciseObjects() {
-  return selectedExercises.map(id => {
-    return exercises.find(ex => ex.id === id) 
-        || customExercises.find(ex => ex.id === id);
-  }).filter(Boolean);
-}
-
-function initExercisePreview() {
-
-}
-
-

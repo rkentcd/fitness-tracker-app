@@ -4,10 +4,8 @@ import { showAddExercisesPanel, renderExercises } from "./settings/addExercisesP
 import { showCreateExercisePanel, renderCustomExercises } from "./settings/createCustomExercise.js";
 import { showExercisePreviewPanel } from "./settings/exercisePreviewPanel.js";
 import { initExerciseSearch } from "./settings/exerciseSearch.js";
-import {initExerciseSelection} from "./settings/addExercisesPanel.js";
+import { initExerciseSelection } from "./settings/addExercisesPanel.js";
 import { initExerciseOptionsSheet } from "./settings/exerciseOptionsSheet.js";
-
-
 
 initSettingsPanelNavigation();
 showCreateRoutinePanel();
