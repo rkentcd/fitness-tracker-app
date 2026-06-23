@@ -1,5 +1,5 @@
 import { exercises } from '../data/exercises.js';
-import { renderExercises } from './panelAddExercises.js';
+import { renderExercises, initExerciseSelection } from './panelAddExercises.js';
 
 export function initExerciseSearch() {
   const searchInputElem = document.querySelector('.js-panel__search-exercises');
@@ -10,6 +10,7 @@ export function initExerciseSearch() {
 
     if (query === '') {
       renderExercises(exercises);
+      initExerciseSelection();
       return;
     }
 
@@ -27,6 +28,7 @@ export function initExerciseSearch() {
     } else {
       exercisesContainerElem.innerHTML = '';
       renderExercises(filteredExercises);
+      initExerciseSelection();
     }
   });
 }
