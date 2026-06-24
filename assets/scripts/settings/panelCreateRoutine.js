@@ -3,6 +3,23 @@ import { getCurrentRoutineExercises, saveCurrentRoutineExercises } from '../stor
 
 let sortableInstance = null;
 
+function updateSaveButton() {
+  const saveBtnElem = document.querySelector('.js-routine-panel__save-button');
+  const exercises = getCurrentRoutineExercises();
+  
+  if (exercises.length > 0) {
+    saveBtnElem.style.backgroundColor = '#b5ff22';
+    saveBtnElem.style.color = '#000000';
+    saveBtnElem.disabled = false;
+    saveBtnElem.style.cursor = 'pointer';
+  } else {
+    saveBtnElem.style.backgroundColor = '#8e8e8e';
+    saveBtnElem.style.color = '#ffffff';
+    saveBtnElem.disabled = true;
+    saveBtnElem.style.cursor = 'default';
+  }
+}
+
 export function showPanelCreateRoutine() {
   const createRoutineBtnElem = document.querySelector('.js-panel__add-routine');
   const cancelBtnElem = document.querySelector('.js-routine-panel__cancel-button');
@@ -74,6 +91,7 @@ export function renderRoutineExercises() {
 
   attachOptionsButtonListeners();
   initDragAndDrop();
+  updateSaveButton();
 }
 
 function attachOptionsButtonListeners() {
