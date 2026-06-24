@@ -1,6 +1,6 @@
 import { exercises } from '../data/exercises.js';
 import { showPanelExercisePreview } from './panelExercisePreview.js';
-import { renderRoutineExercises } from './panelCreateRoutine.js';
+import { renderRoutineExercises, initDragAndDrop } from './panelCreateRoutine.js';
 import { getCustomExercises, getCurrentRoutineExercises, saveCurrentRoutineExercises } from '../storage.js';
 
 export function renderExercises(filteredExercises = exercises) {
