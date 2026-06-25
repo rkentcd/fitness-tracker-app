@@ -1,5 +1,5 @@
 import { initSheetExerciseOptions } from './sheetExerciseOptions.js';
-import { getCurrentRoutineExercises, saveCurrentRoutineExercises } from '../storage.js';
+import { getCurrentRoutineExercises, saveCurrentRoutineExercises, addSavedRoutine, getSavedRoutines } from '../storage.js';
 
 let sortableInstance = null;
 
@@ -23,6 +23,8 @@ function updateSaveButton() {
 export function showPanelCreateRoutine() {
   const createRoutineBtnElem = document.querySelector('.js-panel__add-routine');
   const cancelBtnElem = document.querySelector('.js-routine-panel__cancel-button');
+  const saveBtnElem = document.querySelector('.js-routine-panel__save-button');
+
 
   createRoutineBtnElem.addEventListener('click', () => {
     const targetPanelElem = document.querySelector('.js-routine-panel--create');
@@ -33,6 +35,73 @@ export function showPanelCreateRoutine() {
     const parentPanelElem = cancelBtnElem.closest('.panel');
     parentPanelElem.classList.remove('panel--active-from-top');
   });
+
+  saveBtnElem.addEventListener('click', handleSaveRoutine);
+}
+
+function handleSaveRoutine() {
+  const titleInput = document.querySelector('.js-panel__routine-title-input');
+  const savedRoutines = getSavedRoutines();
+
+  let title = titleInput.value.trim();
+
+  // if title is empty, generate a default title
+  if (!title) {
+    title = `Routine ${savedRoutines.length + 1}`;
+  }
+  
+  // 
+  const exerciseItems = document.querySelectorAll('.routine-exercise__item');
+  const exercises = [];
+
+  exerciseItems.forEach((item) => {
+    const exerciseId = item.dataset.exerciseId;
+    const allExercises = getCurrentRoutineExercises();
+    const exercise = allExercises.find((ex) => ex.id === exerciseId);
+
+    if (exercise) {
+      const inputs = item.querySelectorAll('.routine-exercise__inputs input');
+      const kgInput = inputs[0];
+      const repsInput = inputs[1];
+      const setsInput = inputs[2];
+
+    exercises.push({
+      id: exercise.id,
+      name: exercise.name,
+      image: exercise.image || 'assets/images/icons/hevy.png',
+      kg: parseFloat(kgInput.value) || 0,
+      reps: parseInt(repsInput.value) || 8,
+      sets: parseInt(setsInput.value) || 3
+    });
+    }
+  });
+
+  const routine = {
+    id: 'routine_' + Date.now(),
+    title: title,
+    exercises: exercises
+  };
+
+  addSavedRoutine(routine);
+
+  // clear evrerything
+  clearRoutineForm();
+
+  // close panel
+  const panel = document.querySelector('.js-routine-panel--create');
+  panel.classList.remove('panel--active-from-top');
+}
+
+function clearRoutineForm() {
+  const titleInput = document.querySelector('.js-panel__routine-title-input');
+
+  if (titleInput) {
+    titleInput.value = '';
+  }
+
+  saveCurrentRoutineExercises([]);
+
+  renderRoutineExercises();
 }
 
 export function renderRoutineExercises() {

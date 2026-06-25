@@ -96,7 +96,15 @@ function getSelectedExerciseObjects() {
 
   return selectedExercises
     .map((id) => {
-      return allExercises.find((ex) => ex.id === id);
+      const exercise = allExercises.find((ex) => ex.id === id);
+      if (exercise) {
+        return {
+          id: exercise.id,
+          name: exercise.name,
+          image: exercise.image || 'assets/images/icons/hevy.png'
+        };
+      }
+      return null;
     })
     .filter(Boolean);
 }
@@ -122,7 +130,14 @@ function handleAddBtnClick() {
         });
 
         if (index !== -1 && selectedObjects.length > 0) {
-          currentExercises[index] = selectedObjects[0];
+          const oldExercise = currentExercises[index];
+          const newExercise = {
+            ...selectedObjects[0],
+            kg: oldExercise?.kg || 0,
+            reps: oldExercise?.reps || 8,
+            sets: oldExercise?.sets || 3
+          };
+          currentExercises[index] = newExercise;
         }
       }
 
@@ -136,7 +151,13 @@ function handleAddBtnClick() {
       window.__exerciseToReplace = null;
       window.__exerciseElementToReplace = null;
     } else {
-      currentExercises = [...currentExercises, ...selectedObjects];
+      const exercisesWithDefaults = selectedObjects.map((ex) => ({
+        ...ex,
+        kg: 0,
+        reps: 8,
+        sets: 3
+      }));
+      currentExercises = [...currentExercises, ...exercisesWithDefaults];
     }
 
     saveCurrentRoutineExercises(currentExercises);

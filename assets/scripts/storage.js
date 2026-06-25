@@ -57,7 +57,25 @@ export function saveCurrentRoutineExercises(exercises) {
 
 // clear all data
 export function clearAllData() {
-  Object.values(KEYS).forEach((key) => {
+  const allKeys = Object.values(KEYS);
+  allKeys.push('fitness_saved_routines');
+  allKeys.forEach((key) => {
     localStorage.removeItem(key);
   });
+}
+
+// saved routines
+export function getSavedRoutines() {
+  return getData('fitness_saved_routines', []);
+}
+
+export function saveSavedRoutines(routines) {
+  return setData('fitness_saved_routines', routines);
+}
+
+export function addSavedRoutine(routine) {
+  const routines = getSavedRoutines();
+  routines.push(routine);
+  saveSavedRoutines(routines);
+  return routines;
 }
