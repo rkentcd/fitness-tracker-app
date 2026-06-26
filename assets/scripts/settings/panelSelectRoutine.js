@@ -35,7 +35,7 @@ export function renderSelectRoutine() {
       <div class="panel__routine-card routine-card  data-routine-id="${routine.id}">
         <div class="routine-card__header">
           <span>${routine.title}</span>
-          <button class="button button--dots js-routine-options-btn"  data-routine-id="${routine.id} aria-label="More options">
+          <button class="button button--dots js-routine-options-btn"  data-routine-id="${routine.id}" data-routine-name="${routine.title}" aria-label="More options">
             <span class="button__dot"></span>
             <span class="button__dot"></span>
             <span class="button__dot"></span>

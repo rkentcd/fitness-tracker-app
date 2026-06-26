@@ -101,20 +101,25 @@ export function initSheetRoutineOptions() {
     }
   }
 
-function handleLoadClick() {
-  if (currentRoutineId) {
-    console.log('Load routine:', currentRoutineId);
-    
-    closeSheet();
+  function handleLoadClick() {
+    if (currentRoutineId && currentRoutineElement) {
+      // Remove highlight from all routine cards
+      document.querySelectorAll('.panel__routine-card').forEach((card) => {
+        card.classList.remove('routine-card--selected');
+      });
+
+      currentRoutineElement.classList.add('routine-card--selected');
+
+      closeSheet();
+    }
   }
-}
 
   function handleDeleteClick() {
     if (currentRoutineId) {
       const routines = getSavedRoutines();
       const routine = routines.find(r => r.id === currentRoutineId);
 
-      if (routine && confirm(`Delete "${routine.title}"?`)) {
+      if (routine) {
         const filtered = routines.filter(r => r.id !== currentRoutineId);
         saveSavedRoutines(filtered);
         
