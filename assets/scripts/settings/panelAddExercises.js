@@ -69,7 +69,6 @@ export function showPanelAddExercises() {
 }
 
 function clearExerciseSelection() {
-  // Clear the array
   selectedExercises = [];
 
   // Remove highlight from all cards

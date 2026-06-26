@@ -1,4 +1,6 @@
 import { getSavedRoutines } from '../storage.js';
+import { initSheetRoutineOptions } from './sheetRoutineOptions.js';
+
 
 export function renderSelectRoutine() {
   const container = document.querySelector('.js-routine-list-container');
@@ -47,4 +49,23 @@ export function renderSelectRoutine() {
   });
 
   container.innerHTML = routinesHTML;
+
+  attachRoutineOptionsListeners();
+}
+
+function attachRoutineOptionsListeners() {
+  const optionsBtnElems = document.querySelectorAll('.js-routine-options-btn');
+
+  optionsBtnElems.forEach((btnElem) => {
+    btnElem.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const routineId = btnElem.dataset.routineId;
+      const routineName = btnElem.dataset.routineName;
+      const routineCard = btnElem.closest('.panel__routine-card');
+
+      const sheet = initSheetRoutineOptions();
+      sheet.openSheet(routineId, routineName, routineCard);
+    });
+  });
 }

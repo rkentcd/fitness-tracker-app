@@ -7,6 +7,7 @@ import { initExerciseSearch } from './settings/exerciseSearch.js';
 import { initExerciseSelection } from './settings/panelAddExercises.js';
 import { initSheetExerciseOptions } from './settings/sheetExerciseOptions.js';
 import { renderSelectRoutine } from './settings/panelSelectRoutine.js';
+import { initSheetRoutineOptions } from './settings/sheetRoutineOptions.js';
 
 initSettingsNavigation();
 showPanelCreateRoutine();
@@ -21,5 +22,6 @@ renderRoutineExercises();
 initExerciseSearch();
 initExerciseSelection();
 initSheetExerciseOptions();
+initSheetRoutineOptions();
 
 renderSelectRoutine();
