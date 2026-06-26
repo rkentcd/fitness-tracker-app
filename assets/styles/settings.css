@@ -192,8 +192,10 @@
   gap: 20px;
   padding: 13px 15px 13px 15px;
   flex: 1;
-  height: 650px;
-} 
+}
+.panel__routine-card:last-child {
+  margin-bottom: 120px;
+}
 
 
 /* ========== CREATE ROUTINE PANEL ========== */
