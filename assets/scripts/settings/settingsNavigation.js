@@ -1,3 +1,5 @@
+import { renderSelectRoutine } from './panelSelectRoutine.js';
+
 export function initSettingsNavigation() {
   const settingsItemElems = document.querySelectorAll('.js-settings__item');
   const backBtnElems = document.querySelectorAll('.js-panel__back');
@@ -7,6 +9,10 @@ export function initSettingsNavigation() {
       const target = itemElem.dataset.target;
       const targetPanelElem = document.querySelector(`.js-panel--${target}`);
       targetPanelElem.classList.add('panel--active');
+
+      if (target === 'routine') {
+        renderSelectRoutine();
+      }
     });
   });
 

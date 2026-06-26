@@ -6,6 +6,7 @@ import { showPanelExercisePreview } from './settings/panelExercisePreview.js';
 import { initExerciseSearch } from './settings/exerciseSearch.js';
 import { initExerciseSelection } from './settings/panelAddExercises.js';
 import { initSheetExerciseOptions } from './settings/sheetExerciseOptions.js';
+import { renderSelectRoutine } from './settings/panelSelectRoutine.js';
 
 initSettingsNavigation();
 showPanelCreateRoutine();
@@ -20,3 +21,5 @@ renderRoutineExercises();
 initExerciseSearch();
 initExerciseSelection();
 initSheetExerciseOptions();
+
+renderSelectRoutine();

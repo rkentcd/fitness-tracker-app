@@ -1,5 +1,6 @@
 import { initSheetExerciseOptions } from './sheetExerciseOptions.js';
 import { getCurrentRoutineExercises, saveCurrentRoutineExercises, addSavedRoutine, getSavedRoutines } from '../storage.js';
+import { renderSelectRoutine } from './panelSelectRoutine.js';
 
 let sortableInstance = null;
 
@@ -41,13 +42,13 @@ export function showPanelCreateRoutine() {
 
 function handleSaveRoutine() {
   const titleInput = document.querySelector('.js-panel__routine-title-input');
-  const savedRoutines = getSavedRoutines();
+  // const savedRoutines = getSavedRoutines();
 
   let title = titleInput.value.trim();
 
   // if title is empty, generate a default title
   if (!title) {
-    title = `Routine ${savedRoutines.length + 1}`;
+    title = `Untitled Routine`;
   }
   
   // 
@@ -83,6 +84,8 @@ function handleSaveRoutine() {
   };
 
   addSavedRoutine(routine);
+
+  renderSelectRoutine();
 
   // clear evrerything
   clearRoutineForm();

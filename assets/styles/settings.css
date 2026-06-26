@@ -153,6 +153,9 @@
 .panel__routine-card {
   background-color: #2e2e2e;
   border-radius: 13px;
+  min-height: 150px;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 .routine-card__header {
   display: flex;
@@ -184,6 +187,13 @@
   border-radius: 50%;
   border: none;
 }
+.panel__content--routine {
+  overflow-y: auto;
+  gap: 20px;
+  padding: 13px 15px 13px 15px;
+  flex: 1;
+  height: 650px;
+} 
 
 
 /* ========== CREATE ROUTINE PANEL ========== */
