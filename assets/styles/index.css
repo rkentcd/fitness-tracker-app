@@ -89,3 +89,12 @@ header {
 .nav--routine {
   box-shadow: 0 -15px 30px rgba(21, 21, 21, 0.638);
 }
+
+.routine__empty-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  text-align: center;
+  color: #8e8e8e;
+}

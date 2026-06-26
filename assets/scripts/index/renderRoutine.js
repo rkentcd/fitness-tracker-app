@@ -11,9 +11,8 @@ export function renderRoutineExercises() {
   const routine = routines.find(r => r.id === loadedId);
 
   if (!routine || routine.exercises.length === 0) {
-    titleElem.textContent = 'No Routine Loaded';
     exercisesElem.innerHTML = `
-      <div class="panel__add-exercises-text" style="margin: 20px 0; text-align: center;">
+      <div class="routine__empty-message">
         No exercises to display. Load a routine from Settings.
       </div>
     `;
