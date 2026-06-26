@@ -27,7 +27,20 @@ export function renderExercises(filteredExercises = exercises) {
   const exercisesContainerElem = document.querySelector('.js-exercises');
   exercisesContainerElem.innerHTML = exercisesHTML;
 
+  restoreSelectedExercises();
+
   showPanelExercisePreview();
+}
+
+function restoreSelectedExercises() {
+  const cards = document.querySelectorAll('.js-exercises-card');
+  
+  cards.forEach((card) => {
+    const exerciseId = card.getAttribute('exercise-id');
+    if (selectedExercises.includes(exerciseId)) {
+      card.classList.add('is-selected');
+    }
+  });
 }
 
 export function showPanelAddExercises() {
@@ -47,10 +60,35 @@ export function showPanelAddExercises() {
         parentPanelElem.classList.remove('panel--active-from-top');
       }
 
+      clearExerciseSelection();
+
       window.__exerciseToReplace = null;
       window.__exerciseElementToReplace = null;
     }
   });
+}
+
+function clearExerciseSelection() {
+  // Clear the array
+  selectedExercises = [];
+
+  // Remove highlight from all cards
+  document.querySelectorAll('.js-exercises-card.is-selected').forEach((cardElem) => {
+    cardElem.classList.remove('is-selected');
+  });
+
+  // Hide the Add button
+  const addBtnElem = document.querySelector('.js-btn-add-exercises');
+  if (addBtnElem) {
+    addBtnElem.style.display = 'none';
+  }
+
+  // Clear the search input
+  const searchInputElem = document.querySelector('.js-panel__search-exercises');
+  if (searchInputElem) {
+    searchInputElem.value = '';
+    searchInputElem.dispatchEvent(new Event('input'));
+  }
 }
 
 let selectedExercises = [];
