@@ -98,3 +98,14 @@ header {
   text-align: center;
   color: #8e8e8e;
 }
+
+
+/* warmup exercises */
+.js-warmup-exercises.is-hidden {
+  display: none;
+}
+
+.warmup__toggle {
+  cursor: pointer;
+  user-select: none;
+}

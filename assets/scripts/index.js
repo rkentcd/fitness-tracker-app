@@ -1,3 +1,4 @@
-import { renderRoutineExercises } from './index/renderRoutine.js';
+import { renderRoutineExercises, initWarmupToggle } from './index/renderRoutine.js';
 
 renderRoutineExercises();
+initWarmupToggle();

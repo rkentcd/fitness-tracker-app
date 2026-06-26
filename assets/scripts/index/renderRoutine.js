@@ -35,3 +35,19 @@ export function renderRoutineExercises() {
 
   exercisesElem.innerHTML = exercisesHTML;
 }
+
+export function initWarmupToggle() {
+  const toggle = document.querySelector('.js-warmup-toggle');
+  const exercises = document.querySelector('.js-warmup-exercises');
+  
+  if (!toggle || !exercises) return;
+  
+  const count = exercises.querySelectorAll('.exercises-card').length;
+  let isHidden = false;
+  
+  toggle.addEventListener('click', () => {
+    isHidden = !isHidden;
+    exercises.classList.toggle('is-hidden', isHidden);
+    toggle.textContent = `${isHidden ? 'Show' : 'Hide'} ${count} exercises`;
+  });
+}
