@@ -79,3 +79,15 @@ export function addSavedRoutine(routine) {
   saveSavedRoutines(routines);
   return routines;
 }
+
+export function getLoadedRoutineId() {
+  return getData('fitness_loaded_routine_id', null);
+}
+
+export function saveLoadedRoutineId(id) {
+  return setData('fitness_loaded_routine_id', id);
+}
+
+export function clearLoadedRoutineId() {
+  return setData('fitness_loaded_routine_id', null);
+}

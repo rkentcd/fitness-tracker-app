@@ -1,4 +1,4 @@
-import { getSavedRoutines, saveSavedRoutines } from '../storage.js';
+import { getSavedRoutines, saveSavedRoutines, getLoadedRoutineId, saveLoadedRoutineId, clearLoadedRoutineId } from '../storage.js';
 import { renderSelectRoutine } from './panelSelectRoutine.js';
 
 export function initSheetRoutineOptions() {
@@ -110,6 +110,8 @@ export function initSheetRoutineOptions() {
 
       currentRoutineElement.classList.add('routine-card--selected');
 
+      saveLoadedRoutineId(currentRoutineId);
+
       closeSheet();
     }
   }
@@ -122,6 +124,11 @@ export function initSheetRoutineOptions() {
       if (routine) {
         const filtered = routines.filter(r => r.id !== currentRoutineId);
         saveSavedRoutines(filtered);
+
+        const loadedId = getLoadedRoutineId();
+        if (loadedId === currentRoutineId) {
+          clearLoadedRoutineId();
+        }
         
         renderSelectRoutine();
         

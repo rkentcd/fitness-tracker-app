@@ -1,4 +1,4 @@
-import { getSavedRoutines } from '../storage.js';
+import { getSavedRoutines, getLoadedRoutineId } from '../storage.js';
 import { initSheetRoutineOptions } from './sheetRoutineOptions.js';
 
 
@@ -8,6 +8,7 @@ export function renderSelectRoutine() {
   if (!container) return;
 
   const routines = getSavedRoutines();
+  const loadedRoutineId = getLoadedRoutineId();
 
   if (routines.length === 0) {
     container.innerHTML = `
@@ -31,8 +32,10 @@ export function renderSelectRoutine() {
       ? `${preview} +${moreCount} more`
       : preview;
 
+    const isSelected = routine.id === loadedRoutineId ? 'routine-card--selected' : '';
+
     routinesHTML += `
-      <div class="panel__routine-card routine-card  data-routine-id="${routine.id}">
+      <div class="panel__routine-card routine-card ${isSelected}" data-routine-id="${routine.id}">
         <div class="routine-card__header">
           <span>${routine.title}</span>
           <button class="button button--dots js-routine-options-btn"  data-routine-id="${routine.id}" data-routine-name="${routine.title}" aria-label="More options">
