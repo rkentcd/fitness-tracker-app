@@ -1,5 +1,7 @@
 import { getSavedRoutines, saveSavedRoutines, getLoadedRoutineId, saveLoadedRoutineId, clearLoadedRoutineId } from '../storage.js';
 import { renderSelectRoutine } from './panelSelectRoutine.js';
+import { renderRoutineExercises as renderMainRoutine } from '../index/renderRoutine.js';
+
 
 export function initSheetRoutineOptions() {
   const overlayElem = document.querySelector('.js-routine-options-overlay');
@@ -111,6 +113,9 @@ export function initSheetRoutineOptions() {
       currentRoutineElement.classList.add('routine-card--selected');
 
       saveLoadedRoutineId(currentRoutineId);
+      
+      // update the main page routine display
+      renderMainRoutine();
 
       closeSheet();
     }
@@ -128,6 +133,9 @@ export function initSheetRoutineOptions() {
         const loadedId = getLoadedRoutineId();
         if (loadedId === currentRoutineId) {
           clearLoadedRoutineId();
+          
+          // re-render the main page routine
+          renderMainRoutine();
         }
         
         renderSelectRoutine();

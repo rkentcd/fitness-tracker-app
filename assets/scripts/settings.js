@@ -8,6 +8,7 @@ import { initExerciseSelection } from './settings/panelAddExercises.js';
 import { initSheetExerciseOptions } from './settings/sheetExerciseOptions.js';
 import { renderSelectRoutine } from './settings/panelSelectRoutine.js';
 import { initSheetRoutineOptions } from './settings/sheetRoutineOptions.js';
+import { renderRoutineExercises as renderMainRoutine } from './index/renderRoutine.js';
 
 initSettingsNavigation();
 showPanelCreateRoutine();
@@ -25,3 +26,6 @@ initSheetExerciseOptions();
 initSheetRoutineOptions();
 
 renderSelectRoutine();
+
+// Render the routine on the main page
+renderMainRoutine();
