@@ -64,6 +64,109 @@
     </div>
   </div>
 
+  <!-- routine -->
+  <div class="js-workout-overlay workout-overlay">
+    <div class="workout__container">
+
+      <div class="workout__header">
+        <button class="js-workout-close workout__close" aria-label="Close workout">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="18" y1="6" x2="6" y2="18"/>
+          </svg>
+        </button>
+        <span class="js-workout-phase workout__phase">Warm Up</span>
+        <span class="js-workout-progress workout__progress">1/12</span>
+      </div>
+
+      <div class="workout__timer">
+        <svg class="workout__timer-circle" viewBox="0 0 120 120">
+          <circle class="workout__timer-bg" cx="60" cy="60" r="54" fill="none" stroke="#3a3a3a" stroke-width="6"/>
+          <circle class="js-workout-timer-circle workout__timer-fg" cx="60" cy="60" r="54" fill="none" stroke="#b5ff22" stroke-width="6" 
+            stroke-dasharray="339.292" stroke-dashoffset="0"
+            transform="rotate(-90 60 60)"/>
+        </svg>
+        <span class="js-workout-timer workout__timer-number">30</span>
+      </div>
+
+      <div class="workout__exercise js-workout-exercise">
+        <img class="js-workout-exercise-image workout__exercise-image" src="" alt="">
+        <span class="js-workout-exercise-name workout__exercise-name">Jumping Jacks</span>
+        <div class="workout__exercise-details">
+          <span class="js-workout-exercise-details workout__exercise-details-text">3 × 12 reps</span>
+        </div>
+      </div>
+
+      <div class="workout__controls">
+        <button class="js-workout-pause workout__btn workout__btn--pause">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16"/>
+            <rect x="14" y="4" width="4" height="16"/>
+          </svg>
+          Pause
+        </button>
+        <button class="js-workout-skip workout__btn workout__btn--skip" style="display:none;">
+          Skip ⏭️
+        </button>
+        <button class="js-workout-next workout__btn workout__btn--next is-disabled">
+          Next 5s
+        </button>
+      </div>
+
+      <div class="workout__progress-bar">
+        <div class="js-workout-progress-bar workout__progress-bar-fill"></div>
+      </div>
+
+      <div class="js-workout-routine-phase workout__routine-phase" style="display:none;">
+
+        <div class="workout__rest-controls">
+          <span class="workout__rest-label">Rest</span>
+          <div class="workout__rest-timer">
+            <button class="js-rest-decrease workout__rest-btn">-15</button>
+            <span class="js-workout-rest-time workout__rest-time">1:00</span>
+            <button class="js-rest-increase workout__rest-btn">+15</button>
+          </div>
+        </div>
+
+        <div class="workout__set-info">
+          <span class="js-workout-set-info workout__set-info-text">Set 1 of 3</span>
+        </div>
+
+        <div class="workout__reps-container">
+          <span class="workout__reps-label">Reps</span>
+          <div class="workout__reps-controls">
+            <button class="js-reps-decrease workout__reps-btn">-</button>
+            <input class="js-workout-reps-input workout__reps-input" type="number" value="0" min="0">
+            <button class="js-reps-increase workout__reps-btn">+</button>
+          </div>
+          <button class="js-workout-log-set workout__btn workout__btn--log">Log Set</button>
+        </div>
+
+        <div class="workout__history">
+          <span class="workout__history-label">Last workout:</span>
+          <span class="js-workout-history workout__history-value">0/0/0</span>
+        </div>
+      </div>
+
+      <div class="js-workout-complete workout__complete" style="display:none;">
+        <div class="workout__complete-icon">🎉</div>
+        <div class="workout__complete-title">Workout Complete!</div>
+        <div class="workout__complete-stats">
+          <div class="workout__complete-stat">
+            <span class="workout__complete-stat-value js-complete-exercises">0</span>
+            <span class="workout__complete-stat-label">Exercises</span>
+          </div>
+          <div class="workout__complete-stat">
+            <span class="workout__complete-stat-value js-complete-time">0m 0s</span>
+            <span class="workout__complete-stat-label">Total Time</span>
+          </div>
+        </div>
+        <button class="js-workout-complete-btn workout__complete-btn">Done</button>
+      </div>
+
+    </div>
+  </div>
+
   <button class="start-routine">Start Routine</button>
 
   <nav class="nav nav--routine">

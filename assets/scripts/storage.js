@@ -91,3 +91,17 @@ export function saveLoadedRoutineId(id) {
 export function clearLoadedRoutineId() {
   return setData('fitness_loaded_routine_id', null);
 }
+
+//exercis history
+const HISTORY_KEY = 'fitness_exercise_history';
+
+export function getExerciseHistory(exerciseId) {
+  const history = getData(HISTORY_KEY, {});
+  return history[exerciseId] || [];
+}
+
+export function saveExerciseHistory(exerciseId, repsArray) {
+  const history = getData(HISTORY_KEY, {});
+  history[exerciseId] = repsArray;
+  return setData(HISTORY_KEY, history);
+}
