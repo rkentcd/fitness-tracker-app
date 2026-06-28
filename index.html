@@ -66,7 +66,7 @@
 
   <!-- routine -->
   <div class="js-workout-overlay workout-overlay">
-    <div class="workout__container">
+    <div class="workout__container" style="position: relative;"> 
 
       <div class="workout__header">
         <button class="js-workout-close workout__close" aria-label="Close workout">
@@ -79,7 +79,7 @@
         <span class="js-workout-progress workout__progress">1/12</span>
       </div>
 
-      <div class="workout__timer">
+      <div class="js-workout-timer-container workout__timer">
         <svg class="workout__timer-circle" viewBox="0 0 120 120">
           <circle class="workout__timer-bg" cx="60" cy="60" r="54" fill="none" stroke="#3a3a3a" stroke-width="6"/>
           <circle class="js-workout-timer-circle workout__timer-fg" cx="60" cy="60" r="54" fill="none" stroke="#b5ff22" stroke-width="6" 
@@ -106,15 +106,15 @@
           Pause
         </button>
         <button class="js-workout-skip workout__btn workout__btn--skip" style="display:none;">
-          Skip ⏭️
+          Skip 
         </button>
         <button class="js-workout-next workout__btn workout__btn--next is-disabled">
           Next 5s
         </button>
       </div>
 
-      <div class="workout__progress-bar">
-        <div class="js-workout-progress-bar workout__progress-bar-fill"></div>
+      <div class="js-workout-progress-bar workout__progress-bar">
+        <div class="js-workout-progress-bar-fill workout__progress-bar-fill"></div>
       </div>
 
       <div class="js-workout-routine-phase workout__routine-phase" style="display:none;">
@@ -148,7 +148,7 @@
         </div>
       </div>
 
-      <div class="js-workout-complete workout__complete" style="display:none;">
+       <div class="js-workout-complete workout__complete workout__complete--hidden">
         <div class="workout__complete-icon">🎉</div>
         <div class="workout__complete-title">Workout Complete!</div>
         <div class="workout__complete-stats">

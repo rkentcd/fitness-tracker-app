@@ -65,6 +65,7 @@ export function initWorkoutTimer() {
   elements.completeTime = document.querySelector('.js-complete-time');
   elements.completeBtn = document.querySelector('.js-workout-complete-btn');
   elements.closeBtn = document.querySelector('.js-workout-close');
+  elements.timerContainer = document.querySelector('.js-workout-timer-container');
 
   setupEventListeners();
 
@@ -251,6 +252,7 @@ function startRoutine() {
   elements.routinePhase.style.display = 'flex';
   elements.skipBtn.style.display = 'none';
   elements.nextBtn.style.display = 'none';
+  elements.timerContainer.style.display = 'none';
   
   elements.phase.textContent = 'Routine';
 
@@ -438,6 +440,7 @@ function completeWorkout() {
   if (elements.controls) elements.controls.style.display = 'none';
   elements.progressBar.style.display = 'none';
   document.querySelector('.workout__timer').style.display = 'none';
+  elements.timerContainer.style.display = 'none';
 
   //show complete screen
   elements.complete.classList.add('is-active');
