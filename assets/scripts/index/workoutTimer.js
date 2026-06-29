@@ -66,6 +66,7 @@ export function initWorkoutTimer() {
   elements.completeBtn = document.querySelector('.js-workout-complete-btn');
   elements.closeBtn = document.querySelector('.js-workout-close');
   elements.timerContainer = document.querySelector('.js-workout-timer-container');
+  elements.workoutProgressBar = document.querySelector('.js-workout-progress-bar');
 
   setupEventListeners();
 
@@ -253,6 +254,7 @@ function startRoutine() {
   elements.skipBtn.style.display = 'none';
   elements.nextBtn.style.display = 'none';
   elements.timerContainer.style.display = 'none';
+  elements.workoutProgressBar.style.display = 'none';
   
   elements.phase.textContent = 'Routine';
 
