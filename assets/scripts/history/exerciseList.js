@@ -85,7 +85,6 @@ function updateExerciseList(dateStr) {
           <div class="exercise-history-item__name">${exercise.name}</div>
           <div class="exercise-history-item__sets">${setsDisplay}</div>
         </div>
-        <span class="exercise-history-item__arrow">›</span>
       </div>
     `;
   });
