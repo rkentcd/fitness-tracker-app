@@ -141,6 +141,10 @@ function startWorkout() {
   state.phase = 'warmup';
   state.restTime = CONFIG.REST_DURATION;
 
+  //save start time
+  state.startTime = new Date().toISOString();
+
+
   //show the overalay
   elements.overlay.classList.add('is-active');
   state.isActive = true;
