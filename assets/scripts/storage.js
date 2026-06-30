@@ -105,3 +105,54 @@ export function saveExerciseHistory(exerciseId, repsArray) {
   history[exerciseId] = repsArray;
   return setData(HISTORY_KEY, history);
 }
+
+//workout histroy
+const WORKOUT_HISTORY_KEY = 'fitness_workout_history';
+
+/**
+ * Get all saved workouts
+ * @returns {Array} Array of workout objects
+ */
+export function getWorkoutHistory() {
+  return getData(WORKOUT_HISTORY_KEY, []);
+}
+
+/**
+ * Save a completed workout to history
+ * @param {Object} workout - Workout data with exercises, startTime, endTime
+ */
+export function saveWorkoutToHistory(workout) {
+  const history = getWorkoutHistory();
+  history.push({
+    id: 'workout_' + Date.now(),
+    ...workout,
+    date: workout.startTime || new Date().toISOString(),
+  });
+  return setData(WORKOUT_HISTORY_KEY, history);
+}
+
+/**
+ * Get workouts for a specific date
+ * @param {string} dateStr - Date string in 'YYYY-MM-DD' format
+ * @returns {Array} Array of workouts on that date
+ */
+export function getWorkoutsByDate(dateStr) {
+  const history = getWorkoutHistory();
+  return history.filter(workout => {
+    const workoutDate = new Date(workout.date);
+    const formattedDate = workoutDate.toISOString().split('T')[0];
+    return formattedDate === dateStr;
+  });
+}
+
+/**
+ * Get all dates that have workouts
+ * @returns {Array} Array of date strings in 'YYYY-MM-DD' format
+ */
+export function getWorkoutDates() {
+  const history = getWorkoutHistory();
+  const dates = history.map(workout => {
+    return new Date(workout.date).toISOString().split('T')[0];
+  });
+  return [...new Set(dates)]; // Remove duplicates
+}

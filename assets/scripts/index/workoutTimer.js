@@ -1,5 +1,5 @@
 import { getLoadedRoutineId, getSavedRoutines } from '../storage.js';
-import { getExerciseHistory, saveExerciseHistory } from '../storage.js';
+import { getExerciseHistory, saveExerciseHistory, saveWorkoutToHistory } from '../storage.js';
 
 
 const CONFIG = {
@@ -435,6 +435,29 @@ function completeWorkout() {
   state.phase = 'complete';
   state.isActive = false;
 
+  // save to history
+  const workoutData = {
+    startTime: state.startTime || new Date().toISOString(),
+    endTime: new Date().toISOString(),
+    exercises: state.exercises.map(ex => {
+      // find the completed sets for this exercise
+      const completedSets = state.completedSets || [];
+      return {
+        id: ex.id,
+        name: ex.name,
+        image: ex.image,
+        sets: ex.sets || 3,
+        reps: ex.reps || 12,
+        kg: ex.kg || 0,
+        completedSets: completedSets,
+        isWarmup: ex.isWarmup || false,
+      };
+    }),
+    duration: calculateDuration(),
+  };
+
+  saveWorkoutToHistory(workoutData);
+
   // hide all ui and show complete screen
   elements.exercise.style.display = 'none';
   elements.routinePhase.style.display = 'none';
@@ -456,6 +479,13 @@ function completeWorkout() {
 
   elements.completeExercises.textContent = totalExercises;
   elements.completeTime.textContent = `${Math.floor(totalTime / 60)}m ${totalTime % 60}s`;
+}
+
+function calculateDuration() {
+  if (!state.startTime) return 0;
+  const start = new Date(state.startTime);
+  const end = new Date();
+  return Math.floor((end - start) / 1000);
 }
 
 // close workout
