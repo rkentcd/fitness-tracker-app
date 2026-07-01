@@ -1,8 +1,9 @@
 .header__label {
   font-size: 35px;
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
+
 .history__content {
   padding: 20px 16px 100px 16px;
   max-width: 400px;
@@ -11,36 +12,40 @@
 
 /* ========== CALENDAR STRIP ========== */
 .calendar {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 20px;
 }
+
 .calendar__header {
   display: flex;
   justify-content: center;
   margin-bottom: 16px;
 }
+
 .calendar__month {
   font-size: 18px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   letter-spacing: 0.5px;
 }
+
 .calendar__strip-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
   position: relative;
 }
+
 .calendar__scroll-btn {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
   border: none;
   border-radius: 50%;
-  background: #3a3a3a;
-  color: #ffffff;
+  background: var(--btn-bg);
+  color: var(--text-primary);
   font-size: 20px;
   font-weight: 300;
   cursor: pointer;
@@ -49,16 +54,20 @@
   align-items: center;
   justify-content: center;
 }
+
 .calendar__scroll-btn:active {
   transform: scale(0.92);
-  background: #4a4a4a;
+  background: var(--bg-hover);
 }
+
 .calendar__scroll-btn--left {
   margin-right: 4px;
 }
+
 .calendar__scroll-btn--right {
   margin-left: 4px;
 }
+
 .calendar__strip {
   display: flex;
   gap: 8px;
@@ -67,10 +76,11 @@
   flex: 1;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
+
 .calendar__strip::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
 }
 
 /* ===== CALENDAR DAY ===== */
@@ -88,20 +98,23 @@
   border-radius: 12px;
   transition: background 0.2s ease, transform 0.1s ease;
 }
+
 .calendar-day:active {
   transform: scale(0.92);
 }
+
 .calendar-day__weekday {
   font-size: 11px;
   font-weight: 500;
-  color: #8e8e8e;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
+
 .calendar-day__number {
   font-size: 18px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   width: 32px;
   height: 32px;
   display: flex;
@@ -110,6 +123,7 @@
   border-radius: 50%;
   transition: background 0.2s ease, color 0.2s ease;
 }
+
 .calendar-day__dot {
   width: 6px;
   height: 6px;
@@ -117,85 +131,97 @@
   background: transparent;
   transition: background 0.2s ease;
 }
+
 .calendar-day__dot.has-workout {
-  background: #b5ff22;
+  background: var(--accent-color);
 }
 
 /* ===== SELECTED DAY ===== */
 .calendar-day.is-selected .calendar-day__number {
-  background: #b5ff22;
-  color: #1a1a1a;
+  background: var(--accent-color);
+  color: var(--bg-dark);
 }
+
 .calendar-day.is-selected .calendar-day__weekday {
-  color: #b5ff22;
+  color: var(--accent-color);
 }
 
 /* ===== TODAY ===== */
 .calendar-day.is-today .calendar-day__number {
-  border: 2px solid #b5ff22;
+  border: 2px solid var(--accent-color);
 }
+
 .calendar-day.is-today.is-selected .calendar-day__number {
   border: none;
 }
 
 /* ========== WORKOUT SUMMARY ========== */
 .summary {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 16px 20px;
   margin-bottom: 20px;
 }
+
 .summary__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
 }
+
 .summary__date {
   font-size: 16px;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--text-primary);
 }
+
 .summary__stats {
   display: flex;
   justify-content: space-around;
   gap: 16px;
 }
+
 .summary__stat {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
+
 .summary__stat-value {
   font-size: 20px;
   font-weight: 700;
-  color: #b5ff22;
+  color: var(--accent-color);
 }
+
 .summary__stat-label {
   font-size: 12px;
   font-weight: 400;
-  color: #8e8e8e;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
 
 /* ========== EXERCISE HISTORY LIST ========== */
 .exercise-history {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 16px 0;
   margin-bottom: 20px;
 }
+
 .exercise-history__header {
   padding: 0 20px 12px 20px;
-  border-bottom: 1px solid #3a3a3a;
+  border-bottom: 1px solid var(--border-light);
 }
+
 .exercise-history__title {
   font-size: 18px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
 }
+
 .exercise-history__list {
   padding: 4px 0;
 }
@@ -206,15 +232,18 @@
   align-items: center;
   gap: 16px;
   padding: 12px 20px;
-  border-bottom: 1px solid #333333;
+  border-bottom: 1px solid var(--border-divider);
   transition: background 0.15s ease;
 }
+
 .exercise-history-item:active {
-  background: #333333;
+  background: var(--bg-active);
 }
+
 .exercise-history-item:last-child {
   border-bottom: none;
 }
+
 .exercise-history-item__image {
   width: 40px;
   height: 40px;
@@ -222,29 +251,34 @@
   object-fit: cover;
   flex-shrink: 0;
 }
+
 .exercise-history-item__info {
   flex: 1;
   min-width: 0;
 }
+
 .exercise-history-item__name {
   font-size: 15px;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .exercise-history-item__sets {
   font-size: 13px;
-  color: #8e8e8e;
+  color: var(--text-secondary);
   margin-top: 2px;
 }
+
 .exercise-history-item__sets span {
-  color: #b5ff22;
+  color: var(--accent-color);
   font-weight: 500;
 }
+
 .exercise-history-item__arrow {
-  color: #8e8e8e;
+  color: var(--text-secondary);
   font-size: 20px;
   font-weight: 300;
   flex-shrink: 0;
@@ -260,25 +294,29 @@
   gap: 12px;
   text-align: center;
 }
+
 .history__empty-icon {
   font-size: 48px;
 }
+
 .history__empty-title {
   font-size: 20px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
 }
+
 .history__empty-subtitle {
   font-size: 14px;
-  color: #8e8e8e;
+  color: var(--text-secondary);
   max-width: 280px;
   line-height: 1.5;
 }
 
 /* ========== NAVIGATION ACTIVE ========== */
 .nav__item--active {
-  color: #b5ff22 !important;
+  color: var(--accent-color) !important;
 }
+
 .nav__item--active .nav__icon {
-  fill: #b5ff22 !important;
+  fill: var(--accent-color) !important;
 }

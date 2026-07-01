@@ -1,11 +1,141 @@
-*{
+:root {
+  --bg-primary: #2e2e2e;
+  --bg-secondary: #2e2e2e;
+  --bg-card: #2a2a2a;
+  --bg-input: #2a2a2a;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --bg-dark: #1a1a1a;
+  --bg-darker: #191818;
+  --bg-btn: #3a3a3a;
+  --bg-hover: #4a4a4a;
+  --bg-active: #333333;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #8e8e8e;
+  --text-muted: #6e6e6e;
+  --text-dark: #1a1a1a;
+  --text-light: #b5b5b5;
+  --text-danger: #fc3434;
+  --text-danger-hover: #fc343453;
+  
+  --border-color: #8e8e8e;
+  --border-light: #3a3a3a;
+  --border-divider: #333333;
+  --border-warmup: #8e8e8e6d;
+  --border-card-header: #8e8e8e57;
+  --border-exercise-card: #8e8e8e57;
+  --border-exercise-name: #8e8e8e57;
+  --border-nav: #272626;
+  --border-black: #000000;
+  
+  --card-bg: #2e2e2e;
+  --card-bg-secondary: #2a2a2a;
+  
+  --tag-bg: #191818;
+  
+  --input-field-bg: #444;
+  --input-bg: #1a1a1a;
+  --input-bg-secondary: #2a2a2a;
+  
+  --btn-cancel-bg: #8e8e8e;
+  --btn-cancel-text: #2a2a2a;
+  --btn-save-text: #2a2a2a;
+  --btn-add-text: #2A2A2A;
+  --btn-bg: #3a3a3a;
+  --btn-text: #ffffff;
+  --btn-primary-bg: #b5ff22;
+  --btn-primary-text: #1a1a1a;
+  --btn-disabled-bg: #8e8e8e;
+  --btn-disabled-text: #ffffff;
+  
+  --accent-color: #b5ff22;
+  --accent-hover: #c8ff4a;
+  
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-routine: rgba(21, 21, 21, 0.638);
+  
+  --exercise-card-border: #8e8e8e57;
+  
+  --complete-bg: #1a1a1a;
+  
+  --timer-circle-bg: #3a3a3a;
+}
+
+/* ========== LIGHT THEME ========== */
+body.light-theme {
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.3);
+  --bg-dark: #ffffff;
+  --bg-darker: #f0f0f0;
+  --bg-btn: #e0e0e0;
+  --bg-hover: #d0d0d0;
+  --bg-active: #e8e8e8;
+  
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-muted: #888888;
+  --text-dark: #ffffff;
+  --text-light: #999999;
+  --text-danger: #d32f2f;
+  --text-danger-hover: #d32f2f80;
+  
+  --border-color: #cccccc;
+  --border-light: #e0e0e0;
+  --border-divider: #e8e8e8;
+  --border-warmup: #cccccc6d;
+  --border-card-header: #cccccc57;
+  --border-exercise-card: #cccccc57;
+  --border-exercise-name: #cccccc57;
+  --border-nav: #dddddd;
+  --border-black: #000000;
+  
+  --card-bg: #f0f0f0;
+  --card-bg-secondary: #ffffff;
+  
+  --tag-bg: #e8e8e8;
+  
+  --input-field-bg: #f0f0f0;
+  --input-bg: #ffffff;
+  --input-bg-secondary: #ffffff;
+  
+  --btn-cancel-bg: #cccccc;
+  --btn-cancel-text: #1a1a1a;
+  --btn-cancel-bg: #cccccc;
+  --btn-cancel-text: #1a1a1a;
+  --btn-save-text: #1a1a1a;
+  --btn-add-text: #1a1a1a;
+  --btn-bg: #e0e0e0;
+  --btn-text: #1a1a1a;
+  --btn-primary-bg: #b5ff22;
+  --btn-primary-text: #1a1a1a;
+  --btn-disabled-bg: #cccccc;
+  --btn-disabled-text: #666666;
+  
+
+  --accent-color: #9ecc00;
+  --accent-hover: #b5ff22;
+  
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --shadow-routine: rgba(0, 0, 0, 0.1);
+  
+  --exercise-card-border: #cccccc57;
+  
+  --complete-bg: #ffffff;
+  
+  --timer-circle-bg: #e0e0e0;
+}
+
+* {
   margin: 0;
   padding: 0;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #2e2e2e;
+  background-color: var(--bg-primary);
   margin: 0;
 }
 
@@ -17,8 +147,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2e2e2e;
-  border-bottom: 1px solid #8e8e8e;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
   padding: 12px 0;
   width: 100%;
   height: 70px;
@@ -31,31 +161,35 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid #272626;;
-  background-color: #2e2e2e;
+  border-top: 1px solid var(--border-nav);
+  background-color: var(--bg-primary);
   padding: 12px 0;
   width: 100%;
   position: fixed;
   bottom: -1px;
   z-index: 9999;
 }
+
 .nav__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #8e8e8e;
+  color: var(--text-secondary);
   font-size: 12px;
 }
+
 .nav__item:active {
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
+
 .nav__icon {
   width: 24px;
   height: 24px;
   margin-bottom: 4px;
   fill: currentColor;
 }
+
 .nav__label {
   display: block;
   font-size: 15px;
@@ -67,33 +201,40 @@ header {
   gap: 20px;
   padding-top: 30px;
 }
+
 .exercises__list--hide {
   display: none;
 }
+
 .exercises-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .exercises-card__info {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
+
 .exercises-card__image {
   width: 45px;
   height: 45px;
   border-radius: 8px;
 }
+
 .exercises-card__title {
   font-size: 15px;
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
+
 .exercises-card__details {
   font-size: 16px;
-  color: white;
+  color: var(--text-primary);
 }
+
 .exercises-card__image--routine {
   margin: 0 20px 0 10px;
 }

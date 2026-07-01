@@ -9,6 +9,8 @@ import { initSheetExerciseOptions } from './settings/sheetExerciseOptions.js';
 import { renderSelectRoutine } from './settings/panelSelectRoutine.js';
 import { initSheetRoutineOptions } from './settings/sheetRoutineOptions.js';
 import { renderRoutineExercises as renderMainRoutine } from './index/renderRoutine.js';
+import { initThemeManager } from './settings/themeManager.js';
+
 
 initSettingsNavigation();
 showPanelCreateRoutine();
@@ -29,3 +31,6 @@ renderSelectRoutine();
 
 // Render the routine on the main page
 renderMainRoutine();
+
+// Initialize theme manager
+initThemeManager();
