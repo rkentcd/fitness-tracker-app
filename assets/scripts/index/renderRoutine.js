@@ -3,6 +3,7 @@ import { getLoadedRoutineId, getSavedRoutines } from '../storage.js';
 export function renderRoutineExercises() {
   const titleElem = document.querySelector('.js-routine-title');
   const exercisesElem = document.querySelector('.js-routine-exercises');
+  const startRoutineBtn = document.querySelector('.js-start-routine');
 
   if (!titleElem || !exercisesElem) return;
 
@@ -16,6 +17,8 @@ export function renderRoutineExercises() {
         No exercises to display. Load a routine from Settings.
       </div>
     `;
+
+    startRoutineBtn.classList.add('is-hidden');
     return;
   }
 

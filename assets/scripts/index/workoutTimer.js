@@ -71,7 +71,7 @@ export function initWorkoutTimer() {
   setupEventListeners();
 
   //start routine btn
-  const startBtn = document.querySelector('.start-routine');
+  const startBtn = document.querySelector('.js-start-routine');
   if (startBtn) {
     startBtn.addEventListener('click', startWorkout);
   }
