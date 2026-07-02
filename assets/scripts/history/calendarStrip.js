@@ -1,4 +1,5 @@
 import { getWorkoutDates } from '../storage.js';
+import { getLocalDateString } from '../utils/date.js';
 
 const elements = {};
 
@@ -25,7 +26,7 @@ export function initCalendarStrip() {
 
   // set today as selected
   const today = new Date();
-  state.selectedDate = today.toISOString().split('T')[0];
+  state.selectedDate = getLocalDateString(today);
 
   renderCalendar();
 
@@ -41,7 +42,7 @@ export function initCalendarStrip() {
 
 function renderCalendar() {
   const today = new Date();
-  const todayStr = today.toISOString().split('T')[0];
+  const todayStr = getLocalDateString(today);
 
   //get first day of the month
   const firstDay = new Date(state.currentYear, state.currentMonth, 1);
@@ -67,7 +68,7 @@ function renderCalendar() {
   const currentDate = new Date(startDate);
 
   while (currentDate <= endDate) {
-    const dateStr = currentDate.toISOString().split('T')[0];
+    const dateStr = getLocalDateString(currentDate);
     const dayNumber = currentDate.getDate();
     const weekday = WEEKDAYS[currentDate.getDay()];
     const isToday = dateStr === todayStr;

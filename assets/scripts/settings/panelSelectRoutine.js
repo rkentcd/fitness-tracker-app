@@ -1,6 +1,6 @@
 import { getSavedRoutines, getLoadedRoutineId } from '../storage.js';
 import { initSheetRoutineOptions } from './sheetRoutineOptions.js';
-
+import { escapeHtml } from '../utils/escape.js';
 
 export function renderSelectRoutine() {
   const container = document.querySelector('.js-routine-list-container');
@@ -34,18 +34,21 @@ export function renderSelectRoutine() {
 
     const isSelected = routine.id === loadedRoutineId ? 'routine-card--selected' : '';
 
+    const escapedTitle = escapeHtml(routine.title);
+    const escapedPreview = escapeHtml(previewText);
+
     routinesHTML += `
-      <div class="panel__routine-card routine-card ${isSelected}" data-routine-id="${routine.id}">
+      <div class="panel__routine-card routine-card ${isSelected}" data-routine-id="${escapeHtml(routine.id)}">
         <div class="routine-card__header">
-          <span>${routine.title}</span>
-          <button class="button button--dots js-routine-options-btn"  data-routine-id="${routine.id}" data-routine-name="${routine.title}" aria-label="More options">
+          <span>${escapedTitle}</span>
+          <button class="button button--dots js-routine-options-btn"  data-routine-id="${escapeHtml(routine.id)}" data-routine-name="${escapedTitle}" aria-label="More options">
             <span class="button__dot"></span>
             <span class="button__dot"></span>
             <span class="button__dot"></span>
           </button>
         </div>
         <div class="routine-card__preview">
-          ${previewText}
+          ${escapedPreview}
         </div>
       </div>
     `;

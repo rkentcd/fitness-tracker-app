@@ -1,6 +1,6 @@
-// assets/scripts/history/exerciseList.js
-
 import { getWorkoutsByDate } from '../storage.js';
+import { escapeHtml } from '../utils/escape.js';
+import { getLocalDateString } from '../utils/date.js';
 
 const elements = {};
 
@@ -26,7 +26,7 @@ export function initExerciseList() {
   });
 
   // load todays date
-  const today = new Date().toISOString().split('T')[0];
+  const today = getLocalDateString(new Date());
   updateExerciseList(today);
 }
 
@@ -76,13 +76,16 @@ function updateExerciseList(dateStr) {
       setsDisplay = `${sets} set${sets > 1 ? 's' : ''} · ${reps} reps${kg ? ` · ${kg}kg` : ''}`;
     }
 
+    const escapedName = escapeHtml(exercise.name);
+    const escapedImage = escapeHtml(exercise.image || 'assets/images/icons/hevy.png');
+
     exercisesHTML += `
       <div class="exercise-history-item">
         <img class="exercise-history-item__image" 
-             src="${exercise.image || 'assets/images/icons/hevy.png'}" 
-             alt="${exercise.name}">
+             src="${escapedImage}" 
+             alt="${escapedName}">
         <div class="exercise-history-item__info">
-          <div class="exercise-history-item__name">${exercise.name}</div>
+          <div class="exercise-history-item__name">${escapedName}</div>
           <div class="exercise-history-item__sets">${setsDisplay}</div>
         </div>
       </div>

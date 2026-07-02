@@ -1,3 +1,5 @@
+import { getLocalDateString } from './utils/date.js';
+
 const KEYS = {
   CUSTOM_EXERCISES: 'fitness_custom_exercises',
   CURRENT_ROUTINE: 'fitness_current_routine'
@@ -92,7 +94,7 @@ export function clearLoadedRoutineId() {
   return setData('fitness_loaded_routine_id', null);
 }
 
-//exercis history
+// exercise history
 const HISTORY_KEY = 'fitness_exercise_history';
 
 export function getExerciseHistory(exerciseId) {
@@ -106,7 +108,7 @@ export function saveExerciseHistory(exerciseId, repsArray) {
   return setData(HISTORY_KEY, history);
 }
 
-//workout histroy
+// workout history
 const WORKOUT_HISTORY_KEY = 'fitness_workout_history';
 
 /**
@@ -131,28 +133,17 @@ export function saveWorkoutToHistory(workout) {
   return setData(WORKOUT_HISTORY_KEY, history);
 }
 
-/**
- * Get workouts for a specific date
- * @param {string} dateStr - Date string in 'YYYY-MM-DD' format
- * @returns {Array} Array of workouts on that date
- */
 export function getWorkoutsByDate(dateStr) {
   const history = getWorkoutHistory();
   return history.filter(workout => {
     const workoutDate = new Date(workout.date);
-    const formattedDate = workoutDate.toISOString().split('T')[0];
-    return formattedDate === dateStr;
+    return getLocalDateString(workoutDate) === dateStr;
   });
 }
 
-/**
- * Get all dates that have workouts
- * @returns {Array} Array of date strings in 'YYYY-MM-DD' format
- */
+
 export function getWorkoutDates() {
   const history = getWorkoutHistory();
-  const dates = history.map(workout => {
-    return new Date(workout.date).toISOString().split('T')[0];
-  });
+  const dates = history.map(workout => getLocalDateString(new Date(workout.date)));
   return [...new Set(dates)]; // Remove duplicates
 }

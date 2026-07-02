@@ -1,4 +1,5 @@
 import { getLoadedRoutineId, getSavedRoutines } from '../storage.js';
+import { escapeHtml } from '../utils/escape.js';
 
 export function renderRoutineExercises() {
   const titleElem = document.querySelector('.js-routine-title');
@@ -26,15 +27,19 @@ export function renderRoutineExercises() {
 
   let exercisesHTML = '';
   routine.exercises.forEach((exercise) => {
+    const name = escapeHtml(exercise.name);
+    const image = escapeHtml(exercise.image || 'assets/images/icons/hevy.png');
+
     exercisesHTML += `
-      <div class="exercises-card">
-        <div class="exercises-card__info">
-          <img class="exercises-card__image" src="${exercise.image || 'assets/images/icons/hevy.png'}" alt="${exercise.name}">
-          <span class="exercises-card__title">${exercise.name}</span>
+        <div class="exercises-card">
+          <div class="exercises-card__info">
+            <img class="exercises-card__image" src="${image}" alt="${name}">
+            <span class="exercises-card__title">${name}</span>
+          </div>
         </div>
-      </div>
-    `;
+      `;
   });
+
 
   exercisesElem.innerHTML = exercisesHTML;
 }

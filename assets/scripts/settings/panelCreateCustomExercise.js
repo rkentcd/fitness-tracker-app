@@ -1,6 +1,6 @@
-import { exercises } from '../data/exercises.js';
 import { renderExercises, initExerciseSelection } from './panelAddExercises.js';
 import { addCustomExercise, deleteCustomExercise, getCustomExercises } from '../storage.js';
+import { escapeHtml } from '../utils/escape.js';
 
 export function showPanelCreateCustomExercise() {
   const openBtnElem = document.querySelector('.js-add-exercises-panel__create-button');
@@ -71,13 +71,17 @@ function generateCustomExercises(customExercises) {
   let customHTML = '';
 
   customExercises.forEach((exercise) => {
+
+    const escapedName = escapeHtml(exercise.name);
+    const escapedId = escapeHtml(exercise.id);
+
     customHTML += `
-      <div class="js-exercises-card exercises-card exercises-card--panel" exercise-id="${exercise.id}">
+      <div class="js-exercises-card exercises-card exercises-card--panel" exercise-id="${escapedId}">
         <div class="exercises-card__info js-exercises-card__info">
-          <img class="exercises-card__image" src="${exercise.image || 'assets/images/icons/hevy.png'}" alt="${exercise.name}">
-          <span class="exercises-card__title">${exercise.name}</span>
+          <img class="exercises-card__image" src="${escapeHtml(exercise.image || 'assets/images/icons/hevy.png')}" alt="${escapedName}">
+          <span class="exercises-card__title">${escapedName}</span>
         </div>
-        <button class="js-exercise-delete-btn exercise-preview-btn" data-exercise-id="${exercise.id}">
+        <button class="js-exercise-delete-btn exercise-preview-btn" data-exercise-id="${escapedId}">
           <svg class="exercise-preview-btn-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
             <g>
               <polygon points="221.258,239.94 318.582,336.766 458.482,197.578 490.42,229.354 512,100.514 382.504,121.99 414.44,153.76 318.582,249.131 221.258,152.305 72.06,300.732 116.102,344.553"/>

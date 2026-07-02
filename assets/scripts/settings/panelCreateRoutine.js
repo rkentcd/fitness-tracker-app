@@ -1,6 +1,7 @@
 import { initSheetExerciseOptions } from './sheetExerciseOptions.js';
 import { getCurrentRoutineExercises, saveCurrentRoutineExercises, addSavedRoutine, getSavedRoutines } from '../storage.js';
 import { renderSelectRoutine } from './panelSelectRoutine.js';
+import { escapeHtml } from '../utils/escape.js';
 
 let sortableInstance = null;
 
@@ -125,9 +126,15 @@ export function renderRoutineExercises() {
   } else {
     let addedExercisesHTML = '';
 
+    
     exercises.forEach((exercise) => {
+
+      const escapedName = escapeHtml(exercise.name);
+      const escapedId = escapeHtml(exercise.id);
+      const escapedImage = escapeHtml(exercise.image || 'assets/images/icons/hevy.png');
+      
       addedExercisesHTML += `
-        <div class="routine-exercise__item js-exercise-item" data-exercise-id="${exercise.id}">
+        <div class="routine-exercise__item js-exercise-item" data-exercise-id="${escapedId}">
           <div class="routine-exercise__drag-handle js-drag-handle">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#8e8e8e" stroke-width="2">
               <circle cx="8" cy="6" r="1.5" fill="#8e8e8e" stroke="none"/>
@@ -138,11 +145,11 @@ export function renderRoutineExercises() {
               <circle cx="16" cy="18" r="1.5" fill="#8e8e8e" stroke="none"/>
             </svg>
           </div>
-          <img src="${exercise.image ? exercise.image : 'assets/images/icons/hevy.png'}" alt="icon" class="exercises-card__image exercises-card__image--routine">
+          <img src="${escapedImage}" alt="icon" class="exercises-card__image exercises-card__image--routine">
           <div class="routine-exercise__info">
             <div class="routine-exercise__details">
-              <span class="routine-exercise__name">${exercise.name}</span>
-              <button class="js-exercise-options-btn routine-exercise__options-btn" data-exercise-id="${exercise.id}" data-exercise-name="${exercise.name}">⋮</button>
+              <span class="routine-exercise__name">${escapedName}</span>
+              <button class="js-exercise-options-btn routine-exercise__options-btn" data-exercise-id="${escapedId}" data-exercise-name="${escapedName}">⋮</button>
             </div>
             <div class="routine-exercise__inputs">
               <input type="number" placeholder="kg">
