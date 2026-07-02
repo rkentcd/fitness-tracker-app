@@ -2,6 +2,10 @@
 
 A workout tracking app built with vanilla JavaScript.
 
+## 🚀 Live Demo
+
+Try the app: [fitness-tracker-app](https://rkentcd.github.io/fitness-tracker-app/)
+
 ## Why I Built This
 I wanted a free, simple way to track my gym workouts without subscriptions.
 
