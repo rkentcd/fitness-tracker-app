@@ -10,7 +10,7 @@ Try the app: [fitness-tracker-app](https://rkentcd.github.io/fitness-tracker-app
 
 ## Preview
 
-![Fitness Tracker Screenshot](screenshot.png)
+<img src="screenshot.png" alt="Fitness Tracker Screenshot" width="250">
 
 ## Why I Built This
 
