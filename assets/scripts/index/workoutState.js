@@ -48,7 +48,7 @@ export function resetWorkoutState(routineExercises) {
     ...normalizedRoutineExercises,
   ];
 
-  state.totalExercises = state.exercises.length;
+  state.totalExercises = normalizedRoutineExercises.length;
   state.currentIndex = 0;
   state.currentSet = 0;
   state.completedSets = [];
