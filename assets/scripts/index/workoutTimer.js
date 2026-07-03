@@ -187,22 +187,17 @@ function logSet() {
 
   state.completedSets.push(reps);
 
-  // Check if ALL sets for this exercise are complete
   if (state.completedSets.length >= exercise.sets) {
-    // All sets done - check if this is the last exercise
     const isLastExercise = state.currentIndex >= state.exercises.length - 1;
     
     if (isLastExercise) {
-      // Last exercise: Complete workout (no rest)
       finishExercise();
     } else {
-      // Not last exercise: Start rest before next exercise
       startRestBeforeNextExercise();
     }
     return;
   }
 
-  // Not all sets complete - start rest between sets
   startRest();
 }
 
@@ -213,14 +208,12 @@ function startRestBeforeNextExercise() {
 
   const nextExercise = state.exercises[state.currentIndex + 1];
 
-  // Show rest screen with next exercise name
   elements.logSetBtn.disabled = true;
   elements.logSetBtn.style.opacity = '0.5';
   elements.repsInput.disabled = true;
   elements.setInfo.textContent = `Next: ${nextExercise.name}`;
   elements.restTime.textContent = formatTime(state.timeRemaining);
 
-  // Hide circle (matches main routine behavior)
   elements.timerContainer.style.display = 'none';
 
   clearInterval(state.timer);
