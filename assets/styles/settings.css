@@ -6,6 +6,17 @@
 }
 
 /* ========== SETTINGS LIST ========== */
+.settings {
+  position: fixed;
+  top: 100px;
+  bottom: 110px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+
 .settings__item {
   display: flex;
   justify-content: space-between;

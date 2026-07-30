@@ -5,9 +5,15 @@
 }
 
 .history__content {
-  padding: 20px 16px 100px 16px;
-  max-width: 400px;
-  margin: 0 auto;
+  position: fixed;
+  top: 100px;
+  bottom: 110px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 16px;
+  box-sizing: border-box;
 }
 
 /* ========== CALENDAR STRIP ========== */

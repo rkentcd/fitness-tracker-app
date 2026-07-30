@@ -133,14 +133,25 @@ body.light-theme {
   padding: 0;
 }
 
+html {
+  height: 100%;
+  margin: 0;
+  background-color: var(--bg-darker);
+  overflow: hidden;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--bg-primary);
-  margin: 0;
-}
-
-body.layout--padded {
-  padding-top: 96px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 430px;
+  min-width: 375px;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
 }
 
 header {
